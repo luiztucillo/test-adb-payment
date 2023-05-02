@@ -9,7 +9,7 @@ define([
     'underscore',
     'jquery',
     'Magento_Checkout/js/model/url-builder',
-    'MercadoPago_PaymentMagento/js/view/payment/mp-security-form',
+    'MercadoPago_PaymentMagento/js/view/payment/default',
     'mage/storage',
     'observerCheckoutPro'
 ], function (
@@ -167,6 +167,14 @@ define([
          */
         getInstructionCheckout() {
             return window.checkoutConfig.payment[this.getCode()].instruction_checkout;
-        }
+        },
+
+        /**
+         * Adds terms and conditions link to checkout
+         * @returns {string}
+         */
+        getFingerprint() {
+            return window.checkoutConfig.payment[this.getCode()].fingerprint;
+        },
     });
 });

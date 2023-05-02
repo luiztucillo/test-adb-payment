@@ -84,6 +84,8 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         if ($status !== 'approved'
             && $status !== 'refunded'
             && $status !== 'pending'
+            && $status !== 'cancelled'
+            && $status !== 'complete'
         ) {
             /** @var ResultInterface $result */
             $result = $this->createResult(200, ['empty' => null]);
@@ -98,6 +100,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         $mpStatus = $mercadopagoData['status'];
         $mpTransactionId = $mercadopagoData['preference_id'];
         $childTransactionId = $mercadopagoData['payments_details'][0]['id'];
+        $paymentsDetails = $mercadopagoData['payments_details'];
 
         $searchCriteria = $this->searchCriteria
             ->addFilter('txn_id', $mpTransactionId)
@@ -118,27 +121,28 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         }
 
         foreach ($transactions as $transaction) {
+            $origin = '';
             $order = $this->getOrderData($transaction->getOrderId());
-
-            if ($mpStatus === 'pending') {
-                $this->updateDetails($mercadopagoData, $order);
-
-                /** @var ResultInterface $result */
-                $result = $this->createResult(
-                    200,
-                    'Update Details.',
-                );
-
-                return $result;
+            $payment = $order->getPayment();
+            $transactionId = $payment->getLastTransId();
+            if (
+                isset($paymentsDetails['0']['refunds'][$transactionId]['metadata']['origem'])
+            ){
+                $origin = $paymentsDetails['0']['refunds'][$transactionId]['metadata']['origem'];
             }
-
             $process = $this->processNotification(
                 $mpTransactionId,
                 $status,
                 $childTransactionId,
                 $order,
-                $mpAmountRefund
+                $mpAmountRefund,
+                $mercadopagoData,
+                $origin
             );
+            
+            if ($mpStatus === 'pending') {
+                $this->updateDetails($mercadopagoData, $order);
+            }
 
             /** @var ResultInterface $result */
             $result = $this->createResult(
@@ -214,19 +218,71 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         $mpStatus,
         $childTransactionId,
         $order,
-        $mpAmountRefund = null
+        $mpAmountRefund = null,
+        $mercadopagoData = null,
+        $origin = null
     ) {
         $result = [];
 
-        $isNotApplicable = $this->filterInvalidNotification($mpStatus, $order, $mpAmountRefund);
+        $isNotApplicable = $this->filterInvalidNotification($mpStatus, $order, $mpAmountRefund, $origin);
 
         if ($isNotApplicable['isInvalid']) {
-            return $isNotApplicable;
+            if (strcmp($isNotApplicable['msg'], 'Refund notification for order refunded directly in Mercado Pago.')) {
+                $this->updateDetails($mercadopagoData, $order);
+
+                $result = [
+                    'isInvalid' => true,
+                    'code'      => 200,
+                    'msg'       => [
+                        'error'   => 200,
+                        'message' => __('Order not yet closed in Magento.'),
+                        'state'   => $order->getState(),
+                        'tatus'   => $order->getStatus(),
+                    ],
+                ];
+
+                return $result;
+            } else if (strcmp($isNotApplicable['msg'], 'Refund notification for order already closed.')) {
+                $this->updateDetails($mercadopagoData, $order);
+
+                $result = [
+                    'isInvalid' => true,
+                    'code'      => 200,
+                    'msg'       => [
+                        'error'   => 200,
+                        'message' => __('Order already closed in Magento.'),
+                        'state'   => $order->getState(),
+                        'tatus'   => $order->getStatus(),
+                    ],
+                ];
+
+                return $result;
+            } else if (strcmp($isNotApplicable['msg'], 'Notification response for online refund created in magento')) {
+                $this->updateDetails($mercadopagoData, $order);
+
+                $result = [
+                    'isInvalid' => true,
+                    'code'      => 200,
+                    'msg'       => [
+                        'error'   => 200,
+                        'message' => __('Notification response for online refund.'),
+                        'state'   => $order->getState(),
+                        'tatus'   => $order->getStatus(),
+                    ],
+                ];
+
+                return $result;
+            } else {
+                return $isNotApplicable;
+            }
         }
 
         $this->createChild($mpTransactionId, $childTransactionId, $order);
-        $this->fetchStatus->fetch($order->getEntityId());
 
+        $notificationId = $mercadopagoData['notification_id'];
+
+        $order = $this->fetchStatus->fetch($order->getEntityId(), $notificationId);
+       
         $result = [
             'code'  => 200,
             'msg'   => [

@@ -75,9 +75,18 @@ class CheckoutProAddChildPayment extends AbstractModel
         }
 
         if ($order->getState() === Order::STATE_PAYMENT_REVIEW) {
-            $order = $payment->getOrder();
-            $order->setState(Order::STATE_NEW);
-            $order->setStatus('pending');
+            if(
+                $order->getStatus() === Order::STATE_CLOSED
+                || $order->getStatus() === Order::STATE_PROCESSING
+                || $order->getStatus() === Order::STATE_COMPLETE
+            ) {
+                $order = $payment->getOrder();
+                $order->setState($order->getStatus());
+            } else {
+                $order = $payment->getOrder();
+                $order->setState(Order::STATE_NEW);
+                $order->setStatus('pending');
+            }
         }
 
         $this->writeln(
