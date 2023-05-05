@@ -3,13 +3,13 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
 /**
- * @var MercadoPago\PaymentMagento\Block\Order\Success\Additional $block
- * @see MercadoPago\PaymentMagento\Block\Order\Success
+ * @var MercadoPago\AdbPayment\Block\Order\Success\Additional $block
+ * @see MercadoPago\AdbPayment\Block\Order\Success
  */
 ?>
 <div class="mercadopago-payment-success-details">
@@ -23,22 +23,22 @@
 
     ?>
 
-    <?php if ($messageInfo) { ?>  
+    <?php if ($messageInfo) { ?>
         <p><?= $block->escapeHtml(__($messageInfo)) ?></p>
     <?php } ?>
 
-    <?php if ($lineCode) { ?> 
+    <?php if ($lineCode) { ?>
         <p><b><?= $block->escapeHtml(__($messageLineCode)) ?>:</b></p>
- 
+
         <div class="field mercadopago-input-group">
             <div class="control _with-tooltip">
                 <input type="text"
                     id="line-code-value"
                     value="<?= $block->escapeHtml($lineCode); ?>"
-                    class="input-text mercadopago-input-small"/> 
+                    class="input-text mercadopago-input-small"/>
                 <div class="field-tooltip toggle">
-                    <button class="btn" id="copy-code" 
-                        data-clipboard-action="copy" 
+                    <button class="btn" id="copy-code"
+                        data-clipboard-action="copy"
                         data-clipboard-target="#line-code-value">
                         <?= $block->escapeHtml(__('Copy')); ?>
                     </button>
@@ -60,7 +60,7 @@
             <a href="<?= $block->escapeHtml($block->getInfo('external_resource_url')); ?>"
                 target="_blank"
                 class="action primary continue">
-                <?= $block->escapeHtml(__('Details for payment')) ?> 
+                <?= $block->escapeHtml(__('Details for payment')) ?>
             </a>
         <?php } else {
             echo __('Error getting the link to the ticket. Please contact the seller.');

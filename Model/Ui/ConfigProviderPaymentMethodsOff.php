@@ -1,13 +1,13 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Model\Ui;
+namespace MercadoPago\AdbPayment\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Phrase;
 use Magento\Quote\Api\Data\CartInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
-use MercadoPago\PaymentMagento\Gateway\Config\Config as MercadoPagoConfig;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Config\Config as MercadoPagoConfig;
 use Magento\Framework\View\Asset\Repository;
 
 /**
@@ -18,7 +18,7 @@ class ConfigProviderPaymentMethodsOff implements ConfigProviderInterface
     /**
      * Mercado Pago Payment Magento Payment Methods Off Code.
      */
-    public const CODE = 'mercadopago_paymentmagento_payment_methods_off';
+    public const CODE = 'mercadopago_adbpayment_payment_methods_off';
 
     /**
      * Payment Types Id Allowed.
@@ -33,7 +33,7 @@ class ConfigProviderPaymentMethodsOff implements ConfigProviderInterface
     /**
      * Path Logo use in checkout
      */
-    public const PATH_LOGO = 'MercadoPago_PaymentMagento::images/boleto/logo.svg';
+    public const PATH_LOGO = 'MercadoPago_AdbPayment::images/boleto/logo.svg';
 
     /**
      * @var ConfigPaymentMethodsOff

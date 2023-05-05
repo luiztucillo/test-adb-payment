@@ -2,17 +2,17 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Config;
+namespace MercadoPago\AdbPayment\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Gateway\Config\Config as PaymentConfig;
 use Magento\Store\Model\ScopeInterface;
-use MercadoPago\PaymentMagento\Gateway\Data\Checkout\Fingerprint;
+use MercadoPago\AdbPayment\Gateway\Data\Checkout\Fingerprint;
 
 /**
  * Gateway setting for the payment method for Card.
@@ -22,7 +22,7 @@ class ConfigCc extends PaymentConfig
     /**
      * Method.
      */
-    public const METHOD = 'mercadopago_paymentmagento_cc';
+    public const METHOD = 'mercadopago_adbpayment_cc';
 
     /**
      * Cc Types.

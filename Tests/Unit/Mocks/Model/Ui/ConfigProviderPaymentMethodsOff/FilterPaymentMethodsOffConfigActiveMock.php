@@ -1,6 +1,6 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff;
+namespace MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff;
 
 class FilterPaymentMethodsOffConfigActiveMock {
 
@@ -18,7 +18,7 @@ class FilterPaymentMethodsOffConfigActiveMock {
             'label' => "BBVA Bancomer",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/65467f50-5cf3-11ec-813c-8542a9aff8ea-xl.png",
             'payment_method_id' => "bancomer",
-            'payment_type_id' => "atm"   
+            'payment_type_id' => "atm"
         ],
         2 => [
             'value' => "calimax",
@@ -35,7 +35,7 @@ class FilterPaymentMethodsOffConfigActiveMock {
             'payment_method_id' => "paycash",
             'payment_type_id' => "ticket",
             'payment_option_id' => 'circlek'
-        ], 
+        ],
         4 => [
             'value' => "banamex",
             'label' => "Citibanamex",
@@ -110,7 +110,7 @@ class FilterPaymentMethodsOffConfigActiveMock {
             'label' => "BBVA Bancomer",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/65467f50-5cf3-11ec-813c-8542a9aff8ea-xl.png",
             'payment_method_id' => "bancomer",
-            'payment_type_id' => "atm"   
+            'payment_type_id' => "atm"
         ],
         1 => [
             'value' => "calimax",
@@ -127,7 +127,7 @@ class FilterPaymentMethodsOffConfigActiveMock {
             'payment_method_id' => "paycash",
             'payment_type_id' => "ticket",
             'payment_option_id' => 'circlek'
-        ], 
+        ],
         3 => [
             'value' => "banamex",
             'label' => "Citibanamex",
@@ -173,7 +173,7 @@ class FilterPaymentMethodsOffConfigActiveMock {
             'label' => "BBVA Bancomer",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/65467f50-5cf3-11ec-813c-8542a9aff8ea-xl.png",
             'payment_method_id' => "bancomer",
-            'payment_type_id' => "atm"   
+            'payment_type_id' => "atm"
         ],
         1 => [
             'value' => "calimax",
@@ -190,7 +190,7 @@ class FilterPaymentMethodsOffConfigActiveMock {
             'payment_method_id' => "paycash",
             'payment_type_id' => "ticket",
             'payment_option_id' => 'circlek'
-        ], 
+        ],
         3 => [
             'value' => "banamex",
             'label' => "Citibanamex",

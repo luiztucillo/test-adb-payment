@@ -1,6 +1,6 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Tests\Unit\Mocks\Gateway\Config;
+namespace MercadoPago\AdbPayment\Tests\Unit\Mocks\Gateway\Config;
 
 class PaymentMethodsResponseMock {
 

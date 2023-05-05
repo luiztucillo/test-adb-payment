@@ -1,12 +1,12 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Cron;
+namespace MercadoPago\AdbPayment\Cron;
 
 use Magento\Payment\Model\Method\Logger;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
-use MercadoPago\PaymentMagento\Model\Console\Command\Notification\FetchStatus;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Model\Console\Command\Notification\FetchStatus;
 
 /**
  * CronTab for fetch Payment Methods Off Order Status.

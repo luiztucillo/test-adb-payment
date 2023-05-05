@@ -10,10 +10,10 @@ define([
     'jquery',
     'Magento_Checkout/js/model/quote',
     'Magento_Checkout/js/model/totals',
-    'MercadoPago_PaymentMagento/js/view/payment/mp-sdk',
+    'MercadoPago_AdbPayment/js/view/payment/mp-sdk',
     'Magento_Catalog/js/price-utils',
     'Magento_Checkout/js/model/payment/additional-validators',
-    'MercadoPago_PaymentMagento/js/view/payment/method-renderer/validate-form-security',
+    'MercadoPago_AdbPayment/js/view/payment/method-renderer/validate-form-security',
     'Magento_Checkout/js/action/redirect-on-success'
 ], function (
     _,
@@ -33,18 +33,18 @@ define([
 
         defaults: {
             active: false,
-            template: 'MercadoPago_PaymentMagento/payment/twocc',
-            twoCcForm: 'MercadoPago_PaymentMagento/payment/twocc-form',
-            securityField: 'MercadoPago_PaymentMagento/payment/security-field',
+            template: 'MercadoPago_AdbPayment/payment/twocc',
+            twoCcForm: 'MercadoPago_AdbPayment/payment/twocc-form',
+            securityField: 'MercadoPago_AdbPayment/payment/security-field',
             installmentTextInfo: false,
             installmentTextTEA: null,
             installmentTextCFT: null,
             isLoading: true,
             inputValueProgress:'',
-            fieldCcNumber: 'mercadopago_paymentmagento_twocc_number',
-            fieldSecurityCode: 'mercadopago_paymentmagento_twocc_cid',
-            fieldExpMonth: 'mercadopago_paymentmagento_twocc_expiration_month',
-            fieldExpYear: 'mercadopago_paymentmagento_twocc_expiration_yr',
+            fieldCcNumber: 'mercadopago_adbpayment_twocc_number',
+            fieldSecurityCode: 'mercadopago_adbpayment_twocc_cid',
+            fieldExpMonth: 'mercadopago_adbpayment_twocc_expiration_month',
+            fieldExpYear: 'mercadopago_adbpayment_twocc_expiration_yr',
         },
 
         /**
@@ -52,7 +52,7 @@ define([
          * @returns {String}
          */
         getCode() {
-            return 'mercadopago_paymentmagento_twocc';
+            return 'mercadopago_adbpayment_twocc';
         },
 
         /**
@@ -313,7 +313,7 @@ define([
             if (tokenGenerated === false) {
                 return;
             }
-            
+
             this.cardIndex(1);
             this.installmentsAmount(this.amount() - this.installmentsAmount());
             this.mpSelectedCardType('');
@@ -363,7 +363,7 @@ define([
         showFirstCardBlock() {
             if (this.cardIndex() === 0) {
                 return 'first-card-opened-form';
-            } 
+            }
 
             return 'first-card-edit-button';
         },

@@ -1,6 +1,6 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Block\Sales\Info;
+namespace MercadoPago\AdbPayment\Block\Sales\Info;
 
 use Magento\Payment\Block\ConfigurableInfo;
 
@@ -16,5 +16,5 @@ class PaymentMethodsOff extends ConfigurableInfo
      *
      * @var string
      */
-    protected $_template = 'MercadoPago_PaymentMagento::info/payment-methods-off/instructions.phtml';
+    protected $_template = 'MercadoPago_AdbPayment::info/payment-methods-off/instructions.phtml';
 }

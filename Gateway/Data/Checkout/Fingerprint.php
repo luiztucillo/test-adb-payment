@@ -1,6 +1,6 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Gateway\Data\Checkout;
+namespace MercadoPago\AdbPayment\Gateway\Data\Checkout;
 
 use Magento\Payment\Helper\Data as PaymentHelper;
 

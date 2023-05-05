@@ -2,17 +2,17 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Model\Ui;
+namespace MercadoPago\AdbPayment\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\View\Asset\Source;
 use Magento\Payment\Model\CcConfig;
 use Magento\Quote\Api\Data\CartInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigTwoCc;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigTwoCc;
 use Magento\Payment\Gateway\Config\Config;
 
 /**
@@ -23,12 +23,12 @@ class ConfigProviderTwoCc implements ConfigProviderInterface
     /**
      * Mercadopago Payment Magento TwoCc Code.
      */
-    public const CODE = 'mercadopago_paymentmagento_twocc';
+    public const CODE = 'mercadopago_adbpayment_twocc';
 
     /**
      * Mercadopago Payment Magento Cc Vault Code.
      */
-    public const VAULT_CODE = 'mercadopago_paymentmagento_cc_vault';
+    public const VAULT_CODE = 'mercadopago_adbpayment_cc_vault';
 
     /**
      * @var ConfigTwoCc
@@ -121,7 +121,7 @@ class ConfigProviderTwoCc implements ConfigProviderInterface
         foreach ($types as $code => $label) {
             if (!array_key_exists($code, $this->icons)) {
                 $asset = $this->ccConfig->createAsset(
-                    'MercadoPago_PaymentMagento::images/cc/'.$label.'.svg'
+                    'MercadoPago_AdbPayment::images/cc/'.$label.'.svg'
                 );
                 $placeholder = $this->assetSource->findSource($asset);
                 if ($placeholder) {
@@ -147,7 +147,7 @@ class ConfigProviderTwoCc implements ConfigProviderInterface
     public function getLogo()
     {
         $logo = [];
-        $asset = $this->ccConfig->createAsset('MercadoPago_PaymentMagento::images/twocc/logo.svg');
+        $asset = $this->ccConfig->createAsset('MercadoPago_AdbPayment::images/twocc/logo.svg');
         $placeholder = $this->assetSource->findSource($asset);
         if ($placeholder) {
             list($width, $height) = getimagesizefromstring($asset->getSourceFile());

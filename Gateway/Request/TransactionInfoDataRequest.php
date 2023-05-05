@@ -5,15 +5,15 @@
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Request;
+namespace MercadoPago\AdbPayment\Gateway\Request;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Payment\Model\InfoInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\Config;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigTwoCc;
-use MercadoPago\PaymentMagento\Gateway\SubjectReader;
+use MercadoPago\AdbPayment\Gateway\Config\Config;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigTwoCc;
+use MercadoPago\AdbPayment\Gateway\SubjectReader;
 
 /**
  * Gateway Requests Payment by Card Data.
@@ -115,7 +115,7 @@ class TransactionInfoDataRequest implements BuilderInterface
     public function getDataPaymetTwoCc($payment)
     {
         $instruction = [];
-    
+
         $instruction[self::TRANSACTION_INFO] = [];
 
         for ($i = 0; $i < self::NUM_CARDS; $i++):

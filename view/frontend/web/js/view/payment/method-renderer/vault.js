@@ -1,7 +1,7 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 define([
@@ -13,9 +13,9 @@ define([
     'Magento_Payment/js/model/credit-card-validation/credit-card-data',
     'Magento_Vault/js/view/payment/method-renderer/vault',
     'mage/translate',
-    'MercadoPago_PaymentMagento/js/action/checkout/set-finance-cost',
+    'MercadoPago_AdbPayment/js/action/checkout/set-finance-cost',
     'Magento_Ui/js/model/messageList',
-    'MercadoPago_PaymentMagento/js/view/payment/method-renderer/validate-form-security'
+    'MercadoPago_AdbPayment/js/view/payment/method-renderer/validate-form-security'
 ], function (
     _,
     $,
@@ -34,8 +34,8 @@ define([
     return VaultComponent.extend({
         defaults: {
             active: false,
-            template: 'MercadoPago_PaymentMagento/payment/vault',
-            vaultForm: 'MercadoPago_PaymentMagento/payment/vault-form',
+            template: 'MercadoPago_AdbPayment/payment/vault',
+            vaultForm: 'MercadoPago_AdbPayment/payment/vault-form',
             amount:  quote.totals().base_grand_total,
             creditCardListInstallments: '',
             creditCardVerificationNumber: '',
@@ -75,7 +75,7 @@ define([
          * @returns {String}
          */
         getAuxiliaryCode() {
-            return 'mercadopago_paymentmagento_cc';
+            return 'mercadopago_adbpayment_cc';
         },
 
         /**
@@ -83,7 +83,7 @@ define([
          * @returns {String}
          */
         getCode() {
-            return 'mercadopago_paymentmagento_cc_vault';
+            return 'mercadopago_adbpayment_cc_vault';
         },
 
         /**
@@ -442,7 +442,7 @@ define([
          * @returns {String}
          */
         getMpSiteId() {
-            return window.checkoutConfig.payment['mercadopago_paymentmagento'].mp_site_id;
+            return window.checkoutConfig.payment['mercadopago_adbpayment'].mp_site_id;
         },
 
         /**

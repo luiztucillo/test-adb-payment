@@ -105,7 +105,7 @@ define([
          * @returns {String}
          */
         getMpSiteId() {
-            return window.checkoutConfig.payment['mercadopago_paymentmagento'].mp_site_id;
+            return window.checkoutConfig.payment['mercadopago_adbpayment'].mp_site_id;
         },
 
         /**

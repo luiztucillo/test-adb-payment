@@ -1,12 +1,12 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Gateway\Response;
+namespace MercadoPago\AdbPayment\Gateway\Response;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment\Transaction;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
 
 /**
  * Gateway response to Transaction Details by PaymentMethodsOff.
@@ -248,14 +248,14 @@ class TxnIdPaymentMethodsOffHandler implements HandlerInterface
 
         if ($response[self::METADATA][self::SITE_ID] === self::MLB) {
             $this->setAddtionalInformationMLB($payment, $response);
-        } 
+        }
     }
 
     public function setAddtionalInformationMLB($payment, $response) {
         if ($response[self::PAYMENT_METHOD_ID] === self::BOLETO) {
             $barcode = $response[self::BARCODE][self::CONTENT];
             $lineCode = $this->configMethodsOff->getLineCode($barcode);
-            
+
             $payment->setAdditionalInformation(
                 self::LINE_CODE,
                 $lineCode
@@ -265,7 +265,7 @@ class TxnIdPaymentMethodsOffHandler implements HandlerInterface
                 self::MESSAGE_LINE_CODE,
                 'The Line Code is'
             );
-            
+
             $payment->setAdditionalInformation(
                 self::MESSAGE_WILL_APPROVED,
                 'Will be approved within 2 business days.'

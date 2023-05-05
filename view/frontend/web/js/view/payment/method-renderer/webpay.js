@@ -1,14 +1,14 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
 define([
     'underscore',
     'jquery',
-    'MercadoPago_PaymentMagento/js/view/payment/default',
+    'MercadoPago_AdbPayment/js/view/payment/default',
 ], function (
     _,
     $,
@@ -19,8 +19,8 @@ define([
     return Component.extend({
         defaults: {
             active: false,
-            template: 'MercadoPago_PaymentMagento/payment/webpay',
-            webpayForm: 'MercadoPago_PaymentMagento/payment/webpay-form',
+            template: 'MercadoPago_AdbPayment/payment/webpay',
+            webpayForm: 'MercadoPago_AdbPayment/payment/webpay-form',
             financialInstitution: ''
         },
 
@@ -42,7 +42,7 @@ define([
          * @returns {String}
          */
         getCode() {
-            return 'mercadopago_paymentmagento_webpay';
+            return 'mercadopago_adbpayment_webpay';
         },
 
         /**

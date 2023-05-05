@@ -2,19 +2,19 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Config;
+namespace MercadoPago\AdbPayment\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Payment\Gateway\Config\Config as PaymentConfig;
 use Magento\Store\Model\ScopeInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\Config as BaseConfig;
-use MercadoPago\PaymentMagento\Gateway\Data\Checkout\Fingerprint;
+use MercadoPago\AdbPayment\Gateway\Config\Config as BaseConfig;
+use MercadoPago\AdbPayment\Gateway\Data\Checkout\Fingerprint;
 
 /**
  * Gateway setting for the payment method for Pse.
@@ -24,7 +24,7 @@ class ConfigPse extends PaymentConfig
     /**
      * Method.
      */
-    public const METHOD = 'mercadopago_paymentmagento_pse';
+    public const METHOD = 'mercadopago_adbpayment_pse';
 
     /**
      * Payment Method Id Pse.

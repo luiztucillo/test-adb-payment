@@ -3,7 +3,7 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 -->
@@ -15,22 +15,22 @@
         </group>
     </groups>
     <methods>
-        <method name="mercadopago_paymentmagento_cc">
+        <method name="mercadopago_adbpayment_cc">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
-        <method name="mercadopago_paymentmagento_payment_methods_off">
+        <method name="mercadopago_adbpayment_payment_methods_off">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
-        <method name="mercadopago_paymentmagento_pix">
+        <method name="mercadopago_adbpayment_pix">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
-        <method name="mercadopago_paymentmagento_pse">
+        <method name="mercadopago_adbpayment_pse">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
-        <method name="mercadopago_paymentmagento_webpay">
+        <method name="mercadopago_adbpayment_webpay">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
-        <method name="mercadopago_paymentmagento_twocc">
+        <method name="mercadopago_adbpayment_twocc">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
     </methods>

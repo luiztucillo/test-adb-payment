@@ -9,13 +9,13 @@
 define([
     'underscore',
     'jquery',
-    'MercadoPago_PaymentMagento/js/view/payment/default',
+    'MercadoPago_AdbPayment/js/view/payment/default',
     'Magento_Checkout/js/model/quote',
-    'MercadoPago_PaymentMagento/js/view/payment/method-renderer/validate-form-security',
+    'MercadoPago_AdbPayment/js/view/payment/method-renderer/validate-form-security',
     'mage/url',
     'Magento_Checkout/js/model/full-screen-loader',
     'Magento_Checkout/js/model/url-builder',
-    'MercadoPago_PaymentMagento/js/action/checkout/set-finance-cost',
+    'MercadoPago_AdbPayment/js/action/checkout/set-finance-cost',
     'Magento_Ui/js/model/messageList',
     'mage/translate',
 ], function (
@@ -80,13 +80,13 @@ define([
          * Init component
          */
         initialize: function () {
-            
+
             let self = this;
 
             this._super();
 
             self.amount(quote.totals().base_grand_total);
-            
+
             self.installmentsAmount(quote.totals().base_grand_total);
 
             self.mpCardInstallment.subscribe((value) => {
@@ -108,7 +108,7 @@ define([
             } catch (e) {
                 //
             }
-            
+
             try {
                 window.mpCardForm?.securityCode?.unmount();
             } catch (e) {
@@ -121,7 +121,7 @@ define([
             this.fields = {};
             this.installmentWasCalculated(false);
             this.mpSelectedCardType('');
-            this.mpCardBin(''); 
+            this.mpCardBin('');
             this.mpCardHolderName('');
             this.mpCardInstallment(null);
         },
@@ -207,7 +207,7 @@ define([
                     .on('focus', () => {
                         validateFormSF.toogleFocusStyle(fieldExpMonth);
                     })
-                    .on('validityChange', (event) => {                        
+                    .on('validityChange', (event) => {
                         if (event.errorMessages.length)
                         {
                             _.map(event.errorMessages, (error) => {
@@ -364,14 +364,14 @@ define([
             let msg = error.message || error[0].message;
 
             let field = error.field || error[0]?.field;
-        
+
             if (error.length >= 1) {
 
                 error.forEach((error) => {
                     if (error.field && previousField !== error.field) {
-                    
+
                         field = error.field;
-                    
+
                         msg = this.getMessageError(error.message);
                         let fieldsMage = {
                         cardNumber: this.fields.fieldCcNumber,
@@ -379,9 +379,9 @@ define([
                         expirationMonth: this.fields.fieldExpMonth,
                         expirationYear: this.fields.fieldExpYear,
                     };
-  
+
                     validateFormSF.singleToogleValidityState(fieldsMage[field], msg);
-                 
+
                     }
                     previousField = error.field;
                 });
@@ -390,8 +390,8 @@ define([
 
         /**
          * Returns error message and handles month and year validation
-         * @param {String} message 
-         * @returns {String} 
+         * @param {String} message
+         * @returns {String}
          */
         getMessageError(message) {
             let currentDate = new Date();
@@ -424,7 +424,7 @@ define([
                 self.mpCardInstallment(null);
                 return;
             }
-            
+
 
             if (bin.length === 8) {
                 const result = await window.mp.getInstallments({
@@ -439,7 +439,7 @@ define([
                 if (self.getMpSiteId() === 'MCO' || self.getMpSiteId() === 'MPE' || self.getMpSiteId() === 'MLC') {
                     self.addTextInterestForInstallment(listInstallments);
                 }
-                
+
                 self.mpCardListInstallments(listInstallments);
             }
 
@@ -493,7 +493,7 @@ define([
          * @returns {Boolean}
          */
         getIcons: function (type) {
-        
+
             return window.checkoutConfig.payment[this.getCode()].icons.hasOwnProperty(type) ?
                 window.checkoutConfig.payment[this.getCode()].icons[type]
                 : false;
@@ -644,7 +644,7 @@ define([
 
         /**
          * Add interest text for installments
-         * @param {Array} 
+         * @param {Array}
          * @return {Array}
          */
         addTextInterestForInstallment(listInstallments) {
@@ -659,7 +659,7 @@ define([
                 if (installmentRate === 0 && installmentRateCollector[0] === 'THIRD_PARTY') {
                     installment.recommended_message = installment.recommended_message + ' ' + $t("Your Bank will apply Interest");
                 }
-            
+
                 return installment;
             });
         },

@@ -155,7 +155,7 @@ Waiting...,Waiting...
 "Payment Services","Payment Services"
 "Permission to set up the module","Permission to set up the module"
 "<div class='mercadopago-payment-logo'></div><div class='mercadopago-payment-byline'><p><b>Mercado Pago</b></p><p>It offers payments with credit and debit cards, as well as offline means - in addition to exclusive advantages for those who pay logged into their Mercado Pago account, such as credits, discounts and other special conditions.</p></div>","<div class='mercadopago-payment-logo'></div><div class='mercadopago-payment-byline'><p><b>Mercado Pago</b></p><p>It offers payments with credit and debit cards, as well as offline means - in addition to exclusive advantages for those who pay logged into their Mercado Pago account, such as credits, discounts and other special conditions.</p></div>"
-"Technical support available <a href='https://github.com/mercadopago/payment-magento/issues/new/choose'>here</a>.","Technical support available <a href='https://github.com/mercadopago/payment-magento/issues/new/choose'>here</a>."
+"Technical support available <a href='https://github.com/mercadopago/adb-payment/issues/new/choose'>here</a>.","Technical support available <a href='https://github.com/mercadopago/adb-payment/issues/new/choose'>here</a>."
 "Basic Settings","Basic Settings"
 "API Integration","API Integration"
 "Receive refund notification","Receive refund notification"

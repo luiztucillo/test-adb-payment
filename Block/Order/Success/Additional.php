@@ -2,17 +2,17 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Block\Order\Success;
+namespace MercadoPago\AdbPayment\Block\Order\Success;
 
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use MercadoPago\PaymentMagento\Gateway\Config\Config as PaymentConfig;
+use MercadoPago\AdbPayment\Gateway\Config\Config as PaymentConfig;
 use Magento\Sales\Model\Order\Config as OrderConfig;
 use Magento\Sales\Model\Order;
 
@@ -86,14 +86,14 @@ class Additional extends Template
 
         $methodCode = $this->getMethodCode();
 
-        if ($methodCode === 'mercadopago_paymentmagento_payment_methods_off') {
-            $this->setTemplate('MercadoPago_PaymentMagento::order/success/payment-method-off.phtml');
-        } elseif ($methodCode === 'mercadopago_paymentmagento_pix') {
-            $this->setTemplate('MercadoPago_PaymentMagento::order/success/pix.phtml');
-        } elseif ($methodCode === 'mercadopago_paymentmagento_twocc') {
-            $this->setTemplate('MercadoPago_PaymentMagento::order/success/twocc.phtml');
-        } elseif (strpos($methodCode, 'mercadopago_paymentmagento') !== false) {
-            $this->setTemplate('MercadoPago_PaymentMagento::order/success/default.phtml');
+        if ($methodCode === 'mercadopago_adbpayment_payment_methods_off') {
+            $this->setTemplate('MercadoPago_AdbPayment::order/success/payment-method-off.phtml');
+        } elseif ($methodCode === 'mercadopago_adbpayment_pix') {
+            $this->setTemplate('MercadoPago_AdbPayment::order/success/pix.phtml');
+        } elseif ($methodCode === 'mercadopago_adbpayment_twocc') {
+            $this->setTemplate('MercadoPago_AdbPayment::order/success/twocc.phtml');
+        } elseif (strpos($methodCode, 'mercadopago_adbpayment') !== false) {
+            $this->setTemplate('MercadoPago_AdbPayment::order/success/default.phtml');
         }
     }
 
@@ -164,7 +164,7 @@ class Additional extends Template
     {
         $status = $this->getInfo(self::MP_STATUS);
 
-        if ($this->getMethodCode() === 'mercadopago_paymentmagento_twocc'
+        if ($this->getMethodCode() === 'mercadopago_adbpayment_twocc'
             && strcasecmp(isset($status) ? $status : '', self::STATUS_APPROVED) <> 0
         ) {
             return self::TITLE_PROCESSING_ORDER;

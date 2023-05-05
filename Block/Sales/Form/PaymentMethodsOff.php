@@ -1,12 +1,12 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Block\Sales\Form;
+namespace MercadoPago\AdbPayment\Block\Sales\Form;
 
 use Magento\Backend\Model\Session\Quote;
 use Magento\Framework\Phrase;
 use Magento\Framework\View\Element\Template\Context;
-use MercadoPago\PaymentMagento\Gateway\Config\Config;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Config\Config;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
 
 /**
  * Payment form block by PaymentMethodsOff.
@@ -20,7 +20,7 @@ class PaymentMethodsOff extends \Magento\Payment\Block\Form
      *
      * @var string
      */
-    protected $_template = 'MercadoPago_PaymentMagento::form/payment-methods-off.phtml';
+    protected $_template = 'MercadoPago_AdbPayment::form/payment-methods-off.phtml';
 
     /**
      * @var Config

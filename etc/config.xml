@@ -3,14 +3,14 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <payment>
-            <mercadopago_paymentmagento>
+            <mercadopago_adbpayment>
                 <debug>0</debug>
                 <active>1</active>
                 <environment>production</environment>
@@ -34,9 +34,9 @@
                 <neighborhood>2</neighborhood>
                 <allowspecific>1</allowspecific>
                 <receive_refund>1</receive_refund>
-                <restrict_payment_on_mp_site_id><![CDATA[{"mercadopago_paymentmagento_pix":["MLB"],"mercadopago_paymentmagento_pse":["MCO"],"mercadopago_paymentmagento_webpay":["MLC"]}]]></restrict_payment_on_mp_site_id>
-            </mercadopago_paymentmagento>
-            <mercadopago_paymentmagento_cc>
+                <restrict_payment_on_mp_site_id><![CDATA[{"mercadopago_adbpayment_pix":["MLB"],"mercadopago_adbpayment_pse":["MCO"],"mercadopago_adbpayment_webpay":["MLC"]}]]></restrict_payment_on_mp_site_id>
+            </mercadopago_adbpayment>
+            <mercadopago_adbpayment_cc>
                 <active>1</active>
                 <model>MercadoPagoCcFacade</model>
                 <order_status>processing</order_status>
@@ -91,8 +91,8 @@
                 <specificcountry>AF,ZA,AL,DE,AD,AO,AI,AQ,AG,AN,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BD,BB,BH,BY,BE,BZ,BX,BJ,BM,BO,BA,BW,BR,BG,BN,BF,BI,BT,CV,CM,KH,CA,QA,KZ,TD,GW,GQ,HT,NL,HN,HK,HU,YE,BV,IM,CX,NF,KY,CC,CK,GG,FO,HM,FK,MP,MH,UM,SB,TC,VG,VI,WF,IN,ID,IR,IQ,IE,IS,IL,ID,IR,IQ,IE,IS,IL,IT,JM,JP,JE,PW,PA,PG,PK,PY,PE,PN,PF,PL,PR,PT,KE,KG,GB,CF,KR,MK,MD,CD,DO,KP,CZ,TZ,RE,RO,RW,EH,PM,AS,WS,SH,LC,SM,VC,SL,SC,SY,LK,SD,CL,CN,CY,CO,KM,CG,CI,CR,HR,CU,DK,DJ,DM,EG,SV,AE,EC,ER,EM,SK,SI,ES,US,EE,ET,RU,FJ,PH,FI,FR,GA,GM,GE,GH,GS,GI,GD,GR,GL,GP,GU,GT,GY,GN,JO,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,MO,MG,MY,MW,MV,ML,MT,MA,MQ,MU,MR,MX,MM,FM,MZ,MC,MN,MS,ME,NA,NR,NP,NI,NE,NG,NO,NC,NZ,OM,OA,WO,AP,SE,CH,SR,SJ,TJ,TH,TW,TF,IO,PS,TL,TG,TK,TO,TT,TN,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,YU,ZR,ZM,ZW,KN,ST,SN,RS,SG,SO,SZ</specificcountry>
                 <active_for_mp_site_id>MLB,MLA,MLU,MLM,MCO,MLC,MPE</active_for_mp_site_id>
                 <sort_order>10</sort_order>
-            </mercadopago_paymentmagento_cc>
-            <mercadopago_paymentmagento_twocc>
+            </mercadopago_adbpayment_cc>
+            <mercadopago_adbpayment_twocc>
                 <active>1</active>
                 <model>MercadoPagoTwoCcFacade</model>
                 <order_status>processing</order_status>
@@ -146,8 +146,8 @@
                 <specificcountry>AF,ZA,AL,DE,AD,AO,AI,AQ,AG,AN,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BD,BB,BH,BY,BE,BZ,BX,BJ,BM,BO,BA,BW,BR,BG,BN,BF,BI,BT,CV,CM,KH,CA,QA,KZ,TD,GW,GQ,HT,NL,HN,HK,HU,YE,BV,IM,CX,NF,KY,CC,CK,GG,FO,HM,FK,MP,MH,UM,SB,TC,VG,VI,WF,IN,ID,IR,IQ,IE,IS,IL,ID,IR,IQ,IE,IS,IL,IT,JM,JP,JE,PW,PA,PG,PK,PY,PE,PN,PF,PL,PR,PT,KE,KG,GB,CF,KR,MK,MD,CD,DO,KP,CZ,TZ,RE,RO,RW,EH,PM,AS,WS,SH,LC,SM,VC,SL,SC,SY,LK,SD,CL,CN,CY,CO,KM,CG,CI,CR,HR,CU,DK,DJ,DM,EG,SV,AE,EC,ER,EM,SK,SI,ES,US,EE,ET,RU,FJ,PH,FI,FR,GA,GM,GE,GH,GS,GI,GD,GR,GL,GP,GU,GT,GY,GN,JO,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,MO,MG,MY,MW,MV,ML,MT,MA,MQ,MU,MR,MX,MM,FM,MZ,MC,MN,MS,ME,NA,NR,NP,NI,NE,NG,NO,NC,NZ,OM,OA,WO,AP,SE,CH,SR,SJ,TJ,TH,TW,TF,IO,PS,TL,TG,TK,TO,TT,TN,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,YU,ZR,ZM,ZW,KN,ST,SN,RS,SG,SO,SZ</specificcountry>
                 <active_for_mp_site_id>MLB,MLA,MLU,MLM,MCO,MLC,MPE</active_for_mp_site_id>
                 <sort_order>10</sort_order>
-            </mercadopago_paymentmagento_twocc>
-            <mercadopago_paymentmagento_cc_vault>
+            </mercadopago_adbpayment_twocc>
+            <mercadopago_adbpayment_cc_vault>
                 <active>1</active>
                 <model>MercadoPagoCcVaultFacade</model>
                 <paymentInfoKeys>mp_payment_id,card_installments,card_type,card_number,card_holder_name,card_exp_month,card_exp_year,payer_document_identification,payer_document_type,mp_status,mp_status_detail</paymentInfoKeys>
@@ -157,8 +157,8 @@
                 <can_use_internal>0</can_use_internal>
                 <cvv_enabled>1</cvv_enabled>
                 <group>mercadopago_group</group>
-            </mercadopago_paymentmagento_cc_vault>
-            <mercadopago_paymentmagento_checkout_pro>
+            </mercadopago_adbpayment_cc_vault>
+            <mercadopago_adbpayment_checkout_pro>
                 <active>1</active>
                 <model>MercadoPagoCheckoutProFacade</model>
                 <order_status>pending</order_status>
@@ -199,8 +199,8 @@ Use seu saldo do Mercado Pago ou cartões salvos para comprar sem preencher mais
                 <specificcountry>AF,ZA,AL,DE,AD,AO,AI,AQ,AG,AN,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BD,BB,BH,BY,BE,BZ,BX,BJ,BM,BO,BA,BW,BR,BG,BN,BF,BI,BT,CV,CM,KH,CA,QA,KZ,TD,GW,GQ,HT,NL,HN,HK,HU,YE,BV,IM,CX,NF,KY,CC,CK,GG,FO,HM,FK,MP,MH,UM,SB,TC,VG,VI,WF,IN,ID,IR,IQ,IE,IS,IL,ID,IR,IQ,IE,IS,IL,IT,JM,JP,JE,PW,PA,PG,PK,PY,PE,PN,PF,PL,PR,PT,KE,KG,GB,CF,KR,MK,MD,CD,DO,KP,CZ,TZ,RE,RO,RW,EH,PM,AS,WS,SH,LC,SM,VC,SL,SC,SY,LK,SD,CL,CN,CY,CO,KM,CG,CI,CR,HR,CU,DK,DJ,DM,EG,SV,AE,EC,ER,EM,SK,SI,ES,US,EE,ET,RU,FJ,PH,FI,FR,GA,GM,GE,GH,GS,GI,GD,GR,GL,GP,GU,GT,GY,GN,JO,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,MO,MG,MY,MW,MV,ML,MT,MA,MQ,MU,MR,MX,MM,FM,MZ,MC,MN,MS,ME,NA,NR,NP,NI,NE,NG,NO,NC,NZ,OM,OA,WO,AP,SE,CH,SR,SJ,TJ,TH,TW,TF,IO,PS,TL,TG,TK,TO,TT,TN,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,YU,ZR,ZM,ZW,KN,ST,SN,RS,SG,SO,SZ</specificcountry>
                 <mp_site_id>MLB,MLA,MLU,MLM,MCO,MLC,MPE</mp_site_id>
                 <sort_order>12</sort_order>
-            </mercadopago_paymentmagento_checkout_pro>
-            <mercadopago_paymentmagento_payment_methods_off>
+            </mercadopago_adbpayment_checkout_pro>
+            <mercadopago_adbpayment_payment_methods_off>
                 <model>MercadoPagoPaymentMethodsOffFacade</model>
                 <order_status>pending</order_status>
                 <title translate="true">Payment Title</title>
@@ -232,8 +232,8 @@ Use seu saldo do Mercado Pago ou cartões salvos para comprar sem preencher mais
                 <allowspecific>1</allowspecific>
                 <specificcountry>AF,ZA,AL,DE,AD,AO,AI,AQ,AG,AN,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BD,BB,BH,BY,BE,BZ,BX,BJ,BM,BO,BA,BW,BR,BG,BN,BF,BI,BT,CV,CM,KH,CA,QA,KZ,TD,GW,GQ,HT,NL,HN,HK,HU,YE,BV,IM,CX,NF,KY,CC,CK,GG,FO,HM,FK,MP,MH,UM,SB,TC,VG,VI,WF,IN,ID,IR,IQ,IE,IS,IL,ID,IR,IQ,IE,IS,IL,IT,JM,JP,JE,PW,PA,PG,PK,PY,PE,PN,PF,PL,PR,PT,KE,KG,GB,CF,KR,MK,MD,CD,DO,KP,CZ,TZ,RE,RO,RW,EH,PM,AS,WS,SH,LC,SM,VC,SL,SC,SY,LK,SD,CL,CN,CY,CO,KM,CG,CI,CR,HR,CU,DK,DJ,DM,EG,SV,AE,EC,ER,EM,SK,SI,ES,US,EE,ET,RU,FJ,PH,FI,FR,GA,GM,GE,GH,GS,GI,GD,GR,GL,GP,GU,GT,GY,GN,JO,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,MO,MG,MY,MW,MV,ML,MT,MA,MQ,MU,MR,MX,MM,FM,MZ,MC,MN,MS,ME,NA,NR,NP,NI,NE,NG,NO,NC,NZ,OM,OA,WO,AP,SE,CH,SR,SJ,TJ,TH,TW,TF,IO,PS,TL,TG,TK,TO,TT,TN,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,YU,ZR,ZM,ZW,KN,ST,SN,RS,SG,SO,SZ</specificcountry>
                 <sort_order>13</sort_order>
-            </mercadopago_paymentmagento_payment_methods_off>
-            <mercadopago_paymentmagento_pix>
+            </mercadopago_adbpayment_payment_methods_off>
+            <mercadopago_adbpayment_pix>
                 <model>MercadoPagoPixFacade</model>
                 <order_status>pending</order_status>
                 <title>Pix</title>
@@ -270,8 +270,8 @@ Ao finalizar a compra, você receberá o código para fazer o pagamento no banco
                 <specificcountry>BR</specificcountry>
                 <mp_site_id>MLB</mp_site_id>
                 <sort_order>11</sort_order>
-            </mercadopago_paymentmagento_pix>
-            <mercadopago_paymentmagento_pse>
+            </mercadopago_adbpayment_pix>
+            <mercadopago_adbpayment_pse>
                 <model>MercadoPagoPseFacade</model>
                 <order_status>pending</order_status>
                 <title>Pse</title>
@@ -306,8 +306,8 @@ Ao finalizar a compra, você receberá o código para fazer o pagamento no banco
                 <specificcountry>CO</specificcountry>
                 <mp_site_id>MCO</mp_site_id>
                 <sort_order>15</sort_order>
-            </mercadopago_paymentmagento_pse>
-            <mercadopago_paymentmagento_webpay>
+            </mercadopago_adbpayment_pse>
+            <mercadopago_adbpayment_webpay>
                 <model>MercadoPagoWebpayFacade</model>
                 <order_status>pending</order_status>
                 <title>Redcompra Webpay</title>
@@ -341,7 +341,7 @@ Ao finalizar a compra, você receberá o código para fazer o pagamento no banco
                 <specificcountry>CL</specificcountry>
                 <mp_site_id>MLC</mp_site_id>
                 <sort_order>15</sort_order>
-            </mercadopago_paymentmagento_webpay>
+            </mercadopago_adbpayment_webpay>
         </payment>
         <dev>
             <js>

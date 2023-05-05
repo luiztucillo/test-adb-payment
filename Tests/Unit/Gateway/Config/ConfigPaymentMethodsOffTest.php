@@ -4,15 +4,15 @@ namespace Tests\Unit\Gateway\Config;
 
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\Config;
+use MercadoPago\AdbPayment\Gateway\Config\Config;
 use Magento\Store\Model\ScopeInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff as ConfigMethodsOff;
-use MercadoPago\PaymentMagento\Gateway\Data\Checkout\Fingerprint;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff as ConfigMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Data\Checkout\Fingerprint;
 
 use PHPUnit\Framework\TestCase;
 
 class ConfigPaymentMethodsOffTest extends TestCase {
-    
+
     /**
      * path pattern.
      */
@@ -204,7 +204,7 @@ class ConfigPaymentMethodsOffTest extends TestCase {
     public function testCalcDigitGetInvalidDigit() {
         $expectedDigit = 9;
         $invalidCodeToCalc = '23793.3803';
-        
+
         $this->configMethodsOffMock->expects($this->any())->method('calcDigit')
             ->with($invalidCodeToCalc)->willReturn($expectedDigit);
 

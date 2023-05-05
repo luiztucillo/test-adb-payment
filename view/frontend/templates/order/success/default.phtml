@@ -3,13 +3,13 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
 /**
- * @var MercadoPago\PaymentMagento\Block\Order\Success\Additional $block
- * @see MercadoPago\PaymentMagento\Block\Order\Success
+ * @var MercadoPago\AdbPayment\Block\Order\Success\Additional $block
+ * @see MercadoPago\AdbPayment\Block\Order\Success
  */
 ?>
 <h1><?= $block->escapeHtml(__($block->getTitleByPaymentStatus($block->getInfo('mp_status')))) ?></h1>
@@ -27,7 +27,7 @@
             <a href="<?= $block->escapeHtml($block->getInfo('external_resource_url')); ?>"
                 target="_blank"
                 class="action primary continue">
-                <?= $block->escapeHtml(__('Details for payment')) ?> 
+                <?= $block->escapeHtml(__('Details for payment')) ?>
             </a>
         </div>
     </div>

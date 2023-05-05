@@ -5,7 +5,7 @@
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Block\Sales\Form;
+namespace MercadoPago\AdbPayment\Block\Sales\Form;
 
 use Magento\Payment\Block\Form\Cc as NativeCc;
 
@@ -21,5 +21,5 @@ class TwoCc extends NativeCc
      *
      * @var string
      */
-    protected $_template = 'MercadoPago_PaymentMagento::form/twocc.phtml';
+    protected $_template = 'MercadoPago_AdbPayment::form/twocc.phtml';
 }
