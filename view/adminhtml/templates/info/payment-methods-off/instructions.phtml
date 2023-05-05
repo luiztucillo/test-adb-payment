@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @var \MercadoPago\PaymentMagento\Block\Sales\Info\PaymentMethodsOff $block
- * @see \MercadoPago\PaymentMagento\Block\Sales\Info\PaymentMethodsOff
+ * @var \MercadoPago\AdbPayment\Block\Sales\Info\PaymentMethodsOff $block
+ * @see \MercadoPago\AdbPayment\Block\Sales\Info\PaymentMethodsOff
  */
 $title = $block->escapeHtml($block->getMethod()->getTitle());
 $specificInfo = $block->getSpecificInformation();
@@ -50,7 +50,7 @@ $statusDetail = isset($specificInfo['mp_status_detail']) ? $specificInfo['mp_sta
                     </th>
                     <td>
                         <a target="_blank"
-                            href="<?=  $block->escapeHtml($externalLink) ?>" 
+                            href="<?=  $block->escapeHtml($externalLink) ?>"
                             alt="<?= /* @noEscape */ $title ?>">
                             <?= $block->escapeHtml(__('Download the Boleto')); ?>
                         </a>

@@ -2,7 +2,7 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 -->
@@ -59,7 +59,7 @@
             <ul class="credit-card-types">
                 <!-- ko foreach: {data: getCcAvailableTypesValues(), as: 'item'} -->
                     <!--ko if: $parent.getIcons(item.value) -->
-                    <li class="item">  
+                    <li class="item">
                         <img data-bind="attr: {
                             'src': $parent.getIcons(item.value).url,
                             'alt': item.value,
@@ -94,14 +94,14 @@
                         <label data-bind="attr: {for: getCode() + '_cc_number'}" class="label">
                             <span><!-- ko i18n: 'Card number'--><!-- /ko --></span>
                         </label>
-                        <div type="tel" class="input-mp-iframe number" id="mercadopago_paymentmagento_cc_number">
+                        <div type="tel" class="input-mp-iframe number" id="mercadopago_adbpayment_cc_number">
                         </div>
                         <span class="field-tooltip toggle">
                             <ul class="credit-card-types">
                                  <!-- ko foreach: {data: getCcAvailableTypesValues(), as: 'item'} -->
                                  <li class="item _hidden" data-bind="css: {
                                                        _active: $parent.mpSelectedCardType() == item.value,
-                                                       _hidden: $parent.mpSelectedCardType() != item.value || !$parent.mpSelectedCardType() 
+                                                       _hidden: $parent.mpSelectedCardType() != item.value || !$parent.mpSelectedCardType()
                                                        } ">
                                     <!--ko if: $parent.getIcons(item.value) -->
                                     <img data-bind="attr: {
@@ -122,7 +122,7 @@
                         <label data-bind="attr: {for: getCode() + '_cid'}" class="label">
                             <span><!-- ko i18n: 'CVV - Card Verification Value'--><!-- /ko --></span>
                         </label>
-                        <div type="number" class="input-mp-iframe cvv" id="mercadopago_paymentmagento_cc_cid">
+                        <div type="number" class="input-mp-iframe cvv" id="mercadopago_adbpayment_cc_cid">
                         </div>
                         <div class="field-tooltip toggle">
                             <span class="field-tooltip-action action-cvv"
@@ -146,7 +146,7 @@
                                     <label data-bind="attr: {for: getCode() + '_expiration_month'}" class="label">
                                         <span><!-- ko i18n: 'Expiration month'--><!-- /ko --></span>
                                     </label>
-                                    <div class="input-mp-iframe date" id="mercadopago_paymentmagento_cc_expiration_month"></div>
+                                    <div class="input-mp-iframe date" id="mercadopago_adbpayment_cc_expiration_month"></div>
                                 </div>
                             </div>
                             <div class="field mercadopago-input-group year">
@@ -154,7 +154,7 @@
                                     <label data-bind="attr: {for: getCode() + '_expiration_yr'}" class="label">
                                         <span><!-- ko i18n: 'Expiration year'--><!-- /ko --></span>
                                     </label>
-                                    <div class="input-mp-iframe date" id="mercadopago_paymentmagento_cc_expiration_yr"></div>
+                                    <div class="input-mp-iframe date" id="mercadopago_adbpayment_cc_expiration_yr"></div>
                                 </div>
                             </div>
                         </div>

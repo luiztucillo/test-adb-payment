@@ -2,14 +2,14 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Model\Api\Data;
+namespace MercadoPago\AdbPayment\Model\Api\Data;
 
 use Magento\Framework\Api\AbstractSimpleObject;
-use MercadoPago\PaymentMagento\Api\Data\RulesForFinanceCostInterface;
+use MercadoPago\AdbPayment\Api\Data\RulesForFinanceCostInterface;
 
 /**
  * Date Model for the Financing Cost Rules.

@@ -2,11 +2,11 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Controller\Notification;
+namespace MercadoPago\AdbPayment\Controller\Notification;
 
 use Exception;
 use Magento\Framework\App\CsrfAwareActionInterface;
@@ -14,7 +14,7 @@ use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Sales\Model\Order\Payment\Transaction;
-use MercadoPago\PaymentMagento\Controller\MpIndex;
+use MercadoPago\AdbPayment\Controller\MpIndex;
 
 /**
  * Controler Notification Checkout Pro - Notification of receivers for Checkout Pro Methods.
@@ -139,7 +139,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
                 $mercadopagoData,
                 $origin
             );
-            
+
             if ($mpStatus === 'pending') {
                 $this->updateDetails($mercadopagoData, $order);
             }
@@ -282,7 +282,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         $notificationId = $mercadopagoData['notification_id'];
 
         $order = $this->fetchStatus->fetch($order->getEntityId(), $notificationId);
-       
+
         $result = [
             'code'  => 200,
             'msg'   => [

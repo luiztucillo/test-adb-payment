@@ -5,7 +5,7 @@
  *
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Http\Client;
+namespace MercadoPago\AdbPayment\Gateway\Http\Client;
 
 use Exception;
 use InvalidArgumentException;
@@ -15,7 +15,7 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
-use MercadoPago\PaymentMagento\Gateway\Config\Config;
+use MercadoPago\AdbPayment\Gateway\Config\Config;
 
 /**
  * Communication with Gateway to refund payment.

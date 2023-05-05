@@ -5,12 +5,12 @@
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Request;
+namespace MercadoPago\AdbPayment\Gateway\Request;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigCheckoutPro;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigCheckoutPro;
 
 /**
  * Gateway requests for Payment Metadata by Checkout Pro.

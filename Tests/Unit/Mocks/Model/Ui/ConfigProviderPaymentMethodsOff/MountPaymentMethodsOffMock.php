@@ -1,11 +1,11 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff;
+namespace MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff;
 
 class MountPaymentMethodsOffMock {
 
     public const EXPECTED_WITHOUT_PAYMENT_PLACES = [
-        0 => [     
+        0 => [
             'value' => "bolbradesco",
             'label' => "Boleto",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/00174300-571e-11e8-8364-bff51f08d440-xl.png",
@@ -22,7 +22,7 @@ class MountPaymentMethodsOffMock {
     ];
 
     public const EXPECTED_WITHOUT_PAYMENT_PLACES_AND_WITH_INACTIVE = [
-        0 => [     
+        0 => [
             'value' => "bolbradesco",
             'label' => "Boleto",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/00174300-571e-11e8-8364-bff51f08d440-xl.png",
@@ -45,7 +45,7 @@ class MountPaymentMethodsOffMock {
             'label' => "BBVA Bancomer",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/65467f50-5cf3-11ec-813c-8542a9aff8ea-xl.png",
             'payment_method_id' => "bancomer",
-            'payment_type_id' => "atm"   
+            'payment_type_id' => "atm"
         ],
         2 => [
             'value' => "calimax",
@@ -62,7 +62,7 @@ class MountPaymentMethodsOffMock {
             'payment_method_id' => "paycash",
             'payment_type_id' => "ticket",
             'payment_option_id' => 'circlek'
-        ], 
+        ],
         4 => [
             'value' => "banamex",
             'label' => "Citibanamex",
@@ -108,7 +108,7 @@ class MountPaymentMethodsOffMock {
             'label' => "BBVA Bancomer",
             'logo' => "https://http2.mlstatic.com/storage/logos-api-admin/65467f50-5cf3-11ec-813c-8542a9aff8ea-xl.png",
             'payment_method_id' => "bancomer",
-            'payment_type_id' => "atm"   
+            'payment_type_id' => "atm"
         ],
         1 => [
             'value' => "circlek",
@@ -117,7 +117,7 @@ class MountPaymentMethodsOffMock {
             'payment_method_id' => "paycash",
             'payment_type_id' => "ticket",
             'payment_option_id' => 'circlek'
-        ], 
+        ],
         2 => [
             'value' => "banamex",
             'label' => "Citibanamex",

@@ -2,16 +2,16 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Model\Console\Command\Notification;
+namespace MercadoPago\AdbPayment\Model\Console\Command\Notification;
 
 use Exception;
 use Magento\Payment\Model\Method\Logger;
 use Magento\Sales\Model\Order;
-use MercadoPago\PaymentMagento\Model\Console\Command\AbstractModel;
+use MercadoPago\AdbPayment\Model\Console\Command\AbstractModel;
 
 /**
  * Model for Command lines to capture Status on Mercado Pago.

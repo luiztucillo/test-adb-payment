@@ -1,11 +1,11 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff;
+namespace MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff;
 
 class MountPaymentMethodsOffMock {
 
     public const EXPECTED_WITHOUT_PAYMENT_PLACES = [
-        0 => [     
+        0 => [
             'value' => "bolbradesco",
             'label' => "Boleto",
             ],
@@ -16,7 +16,7 @@ class MountPaymentMethodsOffMock {
     ];
 
     public const EXPECTED_WITHOUT_PAYMENT_PLACES_AND_WITH_INACTIVE = [
-        0 => [     
+        0 => [
             'value' => "bolbradesco",
             'label' => "Boleto",
         ]
@@ -38,7 +38,7 @@ class MountPaymentMethodsOffMock {
         3 => [
             'value' => "circlek",
             'label' => "Circle K",
-        ], 
+        ],
         4 => [
             'value' => "banamex",
             'label' => "Citibanamex",
@@ -69,7 +69,7 @@ class MountPaymentMethodsOffMock {
         1 => [
             'value' => "circlek",
             'label' => "Circle K",
-        ], 
+        ],
         2 => [
             'value' => "banamex",
             'label' => "Citibanamex",

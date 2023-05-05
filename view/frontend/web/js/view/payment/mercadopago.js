@@ -1,7 +1,7 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 define(
@@ -17,21 +17,21 @@ define(
     ) {
         'use strict';
         var config = window.checkoutConfig.payment,
-            methodCheckoutPro = 'mercadopago_paymentmagento_checkout_pro',
-            methodCc = 'mercadopago_paymentmagento_cc',
-            methodPec = 'mercadopago_paymentmagento_pec',
-            methodPix = 'mercadopago_paymentmagento_pix',
-            methodPse = 'mercadopago_paymentmagento_pse',
-            methodWebpay = 'mercadopago_paymentmagento_webpay',
-            methodsOff = 'mercadopago_paymentmagento_payment_methods_off',
-            methodTwoCc = 'mercadopago_paymentmagento_twocc';
+            methodCheckoutPro = 'mercadopago_adbpayment_checkout_pro',
+            methodCc = 'mercadopago_adbpayment_cc',
+            methodPec = 'mercadopago_adbpayment_pec',
+            methodPix = 'mercadopago_adbpayment_pix',
+            methodPse = 'mercadopago_adbpayment_pse',
+            methodWebpay = 'mercadopago_adbpayment_webpay',
+            methodsOff = 'mercadopago_adbpayment_payment_methods_off',
+            methodTwoCc = 'mercadopago_adbpayment_twocc';
 
 
         if (methodsOff in config) {
             rendererList.push(
                 {
                     type: methodsOff,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/payment_methods_off'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/payment_methods_off'
                 }
             );
         }
@@ -40,7 +40,7 @@ define(
             rendererList.push(
                 {
                     type: methodCheckoutPro,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/checkout_pro'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/checkout_pro'
                 }
             );
         }
@@ -49,7 +49,7 @@ define(
             rendererList.push(
                 {
                     type: methodCc,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/cc'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/cc'
                 }
             );
         }
@@ -58,7 +58,7 @@ define(
             rendererList.push(
                 {
                     type: methodPec,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/pec'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/pec'
                 }
             );
         }
@@ -67,7 +67,7 @@ define(
             rendererList.push(
                 {
                     type: methodPix,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/pix'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/pix'
                 }
             );
         }
@@ -76,7 +76,7 @@ define(
             rendererList.push(
                 {
                     type: methodPse,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/pse'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/pse'
                 }
             );
         }
@@ -85,7 +85,7 @@ define(
             rendererList.push(
                 {
                     type: methodWebpay,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/webpay'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/webpay'
                 }
             );
         }
@@ -94,7 +94,7 @@ define(
             rendererList.push(
                 {
                     type: methodTwoCc,
-                    component: 'MercadoPago_PaymentMagento/js/view/payment/method-renderer/twocc'
+                    component: 'MercadoPago_AdbPayment/js/view/payment/method-renderer/twocc'
                 }
             );
         }

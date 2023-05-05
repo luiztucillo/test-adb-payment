@@ -3,7 +3,7 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 -->
@@ -11,54 +11,54 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="mercadopago_paymentmagento_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderBase</item>
-                <item name="mercadopago_paymentmagento_cc_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderCc</item>
-                <item name="mercadopago_paymentmagento_cc_vault_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\Vault\ConfigProvider</item>
-                <item name="mercadopago_paymentmagento_checkout_pro_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderCheckoutPro</item>
-                <item name="mercadopago_paymentmagento_payment_methods_off_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderPaymentMethodsOff</item>
-                <item name="mercadopago_paymentmagento_pix_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderPix</item>
-                <item name="mercadopago_paymentmagento_pse_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderPse</item>
-                <item name="mercadopago_paymentmagento_webpay_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderWebpay</item>
-                <item name="mercadopago_paymentmagento_twocc_config_provider" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\ConfigProviderTwoCc</item>
+                <item name="mercadopago_adbpayment_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderBase</item>
+                <item name="mercadopago_adbpayment_cc_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderCc</item>
+                <item name="mercadopago_adbpayment_cc_vault_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\Vault\ConfigProvider</item>
+                <item name="mercadopago_adbpayment_checkout_pro_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderCheckoutPro</item>
+                <item name="mercadopago_adbpayment_payment_methods_off_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderPaymentMethodsOff</item>
+                <item name="mercadopago_adbpayment_pix_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderPix</item>
+                <item name="mercadopago_adbpayment_pse_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderPse</item>
+                <item name="mercadopago_adbpayment_webpay_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderWebpay</item>
+                <item name="mercadopago_adbpayment_twocc_config_provider" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\ConfigProviderTwoCc</item>
             </argument>
         </arguments>
     </type>
-    <type name="MercadoPago\PaymentMagento\Block\Sales\Info\Card">
+    <type name="MercadoPago\AdbPayment\Block\Sales\Info\Card">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
             </argument>
         </arguments>
     </type>
-    <type name="MercadoPago\PaymentMagento\Block\Sales\Info\CheckoutPro">
+    <type name="MercadoPago\AdbPayment\Block\Sales\Info\CheckoutPro">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
             </argument>
         </arguments>
     </type>
-    <type name="MercadoPago\PaymentMagento\Block\Sales\Info\PaymentMethodsOff">
+    <type name="MercadoPago\AdbPayment\Block\Sales\Info\PaymentMethodsOff">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
             </argument>
         </arguments>
     </type>
-    <type name="MercadoPago\PaymentMagento\Block\Sales\Info\Pix">
+    <type name="MercadoPago\AdbPayment\Block\Sales\Info\Pix">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
             </argument>
         </arguments>
     </type>
-    <type name="MercadoPago\PaymentMagento\Block\Sales\Info\TwoCc">
+    <type name="MercadoPago\AdbPayment\Block\Sales\Info\TwoCc">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
             </argument>
         </arguments>
     </type>
-    <type name="MercadoPago\PaymentMagento\Block\Sales\Info\Webpay">
+    <type name="MercadoPago\AdbPayment\Block\Sales\Info\Webpay">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
@@ -68,21 +68,21 @@
     <type name="Magento\Payment\Model\CcGenericConfigProvider">
         <arguments>
             <argument name="methodCodes" xsi:type="array">
-                <item name="mercadopago_paymentmagento_cc" xsi:type="const">MercadoPago\PaymentMagento\Gateway\Config\ConfigCc::METHOD</item>
+                <item name="mercadopago_adbpayment_cc" xsi:type="const">MercadoPago\AdbPayment\Gateway\Config\ConfigCc::METHOD</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Payment\Model\CcGenericConfigProvider">
         <arguments>
             <argument name="methodCodes" xsi:type="array">
-                <item name="mercadopago_paymentmagento_twocc" xsi:type="const">MercadoPago\PaymentMagento\Gateway\Config\ConfigTwoCc::METHOD</item>
+                <item name="mercadopago_adbpayment_twocc" xsi:type="const">MercadoPago\AdbPayment\Gateway\Config\ConfigTwoCc::METHOD</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
         <arguments>
             <argument name="tokenUiComponentProviders" xsi:type="array">
-                <item name="mercadopago_paymentmagento_cc" xsi:type="object">MercadoPago\PaymentMagento\Model\Ui\TokenUiComponentProvider</item>
+                <item name="mercadopago_adbpayment_cc" xsi:type="object">MercadoPago\AdbPayment\Model\Ui\TokenUiComponentProvider</item>
             </argument>
         </arguments>
     </type>

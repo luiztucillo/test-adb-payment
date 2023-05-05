@@ -5,7 +5,7 @@
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Block\Sales\Info;
+namespace MercadoPago\AdbPayment\Block\Sales\Info;
 
 use Magento\Payment\Block\ConfigurableInfo;
 
@@ -21,5 +21,5 @@ class TwoCc extends ConfigurableInfo
      *
      * @var string
      */
-    protected $_template = 'MercadoPago_PaymentMagento::info/twocc/instructions.phtml';
+    protected $_template = 'MercadoPago_AdbPayment::info/twocc/instructions.phtml';
 }

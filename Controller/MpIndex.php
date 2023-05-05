@@ -2,11 +2,11 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Controller;
+namespace MercadoPago\AdbPayment\Controller;
 
 use Exception;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -26,9 +26,9 @@ use Magento\Sales\Model\Order\CreditmemoFactory;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\OrderRepository;
 use Magento\Sales\Model\Service\CreditmemoService;
-use MercadoPago\PaymentMagento\Gateway\Config\Config;
-use MercadoPago\PaymentMagento\Model\Console\Command\Notification\CheckoutProAddChildPayment;
-use MercadoPago\PaymentMagento\Model\Console\Command\Notification\FetchStatus;
+use MercadoPago\AdbPayment\Gateway\Config\Config;
+use MercadoPago\AdbPayment\Model\Console\Command\Notification\CheckoutProAddChildPayment;
+use MercadoPago\AdbPayment\Model\Console\Command\Notification\FetchStatus;
 
 /**
  * Class Mercado Pago Index.
@@ -268,7 +268,7 @@ abstract class MpIndex extends Action
                     'code'      => 200,
                     'msg'       => __('Unable to apply refund.'),
                 ];
-    
+
                 return $result;
             }
 
@@ -287,7 +287,7 @@ abstract class MpIndex extends Action
                 'code'      => 200,
                 'msg'       => 'Refund notification for order already closed.',
                 ];
-    
+
                 return $result;
             }}
 
@@ -317,7 +317,7 @@ abstract class MpIndex extends Action
         $result = [
             'isInvalid' => false,
         ];
-        
+
         return $result;
     }
 
@@ -387,7 +387,7 @@ abstract class MpIndex extends Action
                 ];
             }
             $order->addCommentToStatusHistory(__('Order refunded.'));
-            
+
             return $result;
         }
     }

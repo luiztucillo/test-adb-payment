@@ -1,10 +1,10 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Model\Adminhtml\Source;
+namespace MercadoPago\AdbPayment\Model\Adminhtml\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 use Magento\Framework\App\RequestInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\Config as MercadoPagoConfig;
+use MercadoPago\AdbPayment\Gateway\Config\Config as MercadoPagoConfig;
 
 
 /**
@@ -93,7 +93,7 @@ class PaymentMethodsOff implements ArrayInterface
         $labels = array();
         foreach ($options as $key => $row) {
             $labels[$key] = $row['label'];
-            
+
         }
         array_multisort($labels, SORT_ASC, $options);
         return $options;

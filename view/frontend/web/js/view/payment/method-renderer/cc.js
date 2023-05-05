@@ -2,7 +2,7 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
@@ -13,7 +13,7 @@ define([
     'Magento_Checkout/js/model/quote',
     'Magento_Checkout/js/model/totals',
     'Magento_Checkout/js/model/url-builder',
-    'MercadoPago_PaymentMagento/js/view/payment/mp-sdk',
+    'MercadoPago_AdbPayment/js/view/payment/mp-sdk',
     'Magento_Vault/js/view/payment/vault-enabler',
 ], function (
     _,
@@ -32,18 +32,18 @@ define([
 
         defaults: {
             active: false,
-            template: 'MercadoPago_PaymentMagento/payment/cc',
-            ccForm: 'MercadoPago_PaymentMagento/payment/cc-form',
-            securityField: 'MercadoPago_PaymentMagento/payment/security-field',
+            template: 'MercadoPago_AdbPayment/payment/cc',
+            ccForm: 'MercadoPago_AdbPayment/payment/cc-form',
+            securityField: 'MercadoPago_AdbPayment/payment/security-field',
             amount: '',
             installmentTextInfo: false,
             installmentTextTEA: null,
             installmentTextCFT: null,
             isLoading: true,
-            fieldCcNumber: 'mercadopago_paymentmagento_cc_number',
-            fieldSecurityCode: 'mercadopago_paymentmagento_cc_cid',
-            fieldExpMonth: 'mercadopago_paymentmagento_cc_expiration_month',
-            fieldExpYear: 'mercadopago_paymentmagento_cc_expiration_yr',
+            fieldCcNumber: 'mercadopago_adbpayment_cc_number',
+            fieldSecurityCode: 'mercadopago_adbpayment_cc_cid',
+            fieldExpMonth: 'mercadopago_adbpayment_cc_expiration_month',
+            fieldExpYear: 'mercadopago_adbpayment_cc_expiration_yr',
         },
 
         /**
@@ -51,7 +51,7 @@ define([
          * @returns {String}
          */
         getCode() {
-            return 'mercadopago_paymentmagento_cc';
+            return 'mercadopago_adbpayment_cc';
         },
 
         /**

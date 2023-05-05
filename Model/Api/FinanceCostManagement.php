@@ -2,20 +2,20 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Model\Api;
+namespace MercadoPago\AdbPayment\Model\Api;
 
 use Exception;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\CartTotalRepositoryInterface;
-use MercadoPago\PaymentMagento\Api\Data\FinanceCostInterface;
-use MercadoPago\PaymentMagento\Api\Data\RulesForFinanceCostInterface;
-use MercadoPago\PaymentMagento\Api\FinanceCostManagementInterface;
+use MercadoPago\AdbPayment\Api\Data\FinanceCostInterface;
+use MercadoPago\AdbPayment\Api\Data\RulesForFinanceCostInterface;
+use MercadoPago\AdbPayment\Api\FinanceCostManagementInterface;
 
 /**
  * Model for application of Financing Cost in Order totals.
@@ -64,7 +64,7 @@ class FinanceCostManagement implements FinanceCostManagementInterface
         RulesForFinanceCostInterface $rules
     ) {
 
-        if ($rules->getPaymentMethod() === 'mercadopago_paymentmagento_twocc'){
+        if ($rules->getPaymentMethod() === 'mercadopago_adbpayment_twocc'){
             return $this->saveFinanceCostTwoCc($cartId, $userSelect, $rules);
         }
 
@@ -115,7 +115,7 @@ class FinanceCostManagement implements FinanceCostManagementInterface
         if(!$userSelect->getSelectedInstallment()){
             return;
         }
-        
+
         $calculate = [];
         $quoteCart = $this->quoteCartRepository->getActive($cartId);
 

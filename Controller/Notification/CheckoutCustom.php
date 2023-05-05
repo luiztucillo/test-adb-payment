@@ -2,11 +2,11 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Controller\Notification;
+namespace MercadoPago\AdbPayment\Controller\Notification;
 
 use Exception;
 use Magento\Framework\App\CsrfAwareActionInterface;
@@ -14,7 +14,7 @@ use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\HTTP\ZendClient;
-use MercadoPago\PaymentMagento\Controller\MpIndex;
+use MercadoPago\AdbPayment\Controller\MpIndex;
 
 /**
  * Controler Notification Checkout Custom - Notification of receivers for Checkout Custom Methods.

@@ -1,6 +1,6 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff;
+namespace MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff;
 
 class ToOptionArrayMock {
 
@@ -9,7 +9,7 @@ class ToOptionArrayMock {
             'value' => null,
             'label' => 'Accept all payment methods',
         ],
-        1 => [     
+        1 => [
             'value' => "bolbradesco",
             'label' => "Boleto",
         ],
@@ -24,7 +24,7 @@ class ToOptionArrayMock {
             'value' => null,
             'label' => 'Accept all payment methods',
         ],
-        1 => [     
+        1 => [
             'value' => "bolbradesco",
             'label' => "Boleto",
         ]
@@ -50,7 +50,7 @@ class ToOptionArrayMock {
         4 => [
             'value' => "circlek",
             'label' => "Circle K",
-        ], 
+        ],
         5 => [
             'value' => "banamex",
             'label' => "Citibanamex",
@@ -85,7 +85,7 @@ class ToOptionArrayMock {
         2 => [
             'value' => "circlek",
             'label' => "Circle K",
-        ], 
+        ],
         3 => [
             'value' => "banamex",
             'label' => "Citibanamex",

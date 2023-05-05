@@ -2,7 +2,7 @@
 define([
     'underscore',
     'jquery',
-    'MercadoPago_PaymentMagento/js/view/payment/default'
+    'MercadoPago_AdbPayment/js/view/payment/default'
 ], function (
     _,
     $,
@@ -13,8 +13,8 @@ define([
     return Component.extend({
         defaults: {
             active: false,
-            template: 'MercadoPago_PaymentMagento/payment/payment-methods-off',
-            paymentMethodsOffForm: 'MercadoPago_PaymentMagento/payment/payment-methods-off-form',
+            template: 'MercadoPago_AdbPayment/payment/payment-methods-off',
+            paymentMethodsOffForm: 'MercadoPago_AdbPayment/payment/payment-methods-off-form',
             payerFirstName: '',
             payerLastName: '',
             paymentMethodsOff: []
@@ -39,7 +39,7 @@ define([
          * @returns {String}
          */
         getCode() {
-            return 'mercadopago_paymentmagento_payment_methods_off';
+            return 'mercadopago_adbpayment_payment_methods_off';
         },
 
         /**
@@ -85,19 +85,19 @@ define([
         getPaymentSelected: function () {
             if ( this.getCountPaymentMethodsOffActive() === 1) {
                 var input = document.getElementsByName("payment[payment_methods_off]")[0];
-                return { 
-                    "payment_method_id": input.getAttribute("payment_method_id"), 
-                    "payment_type_id": input.getAttribute("payment_type_id"), 
+                return {
+                    "payment_method_id": input.getAttribute("payment_method_id"),
+                    "payment_type_id": input.getAttribute("payment_type_id"),
                     "payment_option_id": input.getAttribute("payment_option_id")
                 };
             }
-    
+
             var element = document.querySelector('input[name="payment[payment_methods_off]"]:checked');
-    
+
             if (this.getCountPaymentMethodsOffActive() > 1 && element) {
-                return { 
-                    "payment_method_id": element.getAttribute("payment_method_id"), 
-                    "payment_type_id": element.getAttribute("payment_type_id"), 
+                return {
+                    "payment_method_id": element.getAttribute("payment_method_id"),
+                    "payment_type_id": element.getAttribute("payment_type_id"),
                     "payment_option_id": element.getAttribute("payment_option_id")
                 };
             } else {

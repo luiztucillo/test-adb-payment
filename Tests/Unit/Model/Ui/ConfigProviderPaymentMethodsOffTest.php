@@ -3,20 +3,20 @@
 namespace Tests\Unit\Model\Ui;
 
 use PHPUnit\Framework\TestCase;
-use MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff\MountPaymentMethodsOffMock;
-use MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff\FilterPaymentMethodsOffConfigActiveMock;
-use MercadoPago\PaymentMagento\Tests\Unit\Mocks\Gateway\Config\PaymentMethodsResponseMock;
+use MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff\MountPaymentMethodsOffMock;
+use MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Ui\ConfigProviderPaymentMethodsOff\FilterPaymentMethodsOffConfigActiveMock;
+use MercadoPago\AdbPayment\Tests\Unit\Mocks\Gateway\Config\PaymentMethodsResponseMock;
 
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Quote\Api\Data\CartInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
-use MercadoPago\PaymentMagento\Gateway\Config\Config as MercadoPagoConfig;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Config\Config as MercadoPagoConfig;
 
-use MercadoPago\PaymentMagento\Model\Ui\ConfigProviderPaymentMethodsOff;
+use MercadoPago\AdbPayment\Model\Ui\ConfigProviderPaymentMethodsOff;
 
 class ConfigProviderPaymentMethodsOffTest extends TestCase {
-    
+
     /**
      * @var configProviderPaymentMethodsOffMock
      */
@@ -69,9 +69,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
         ])->getMock();
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -220,7 +220,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->method('getPaymentMethodsOffActive')
             ->with($storeId)
             ->willReturn(null);
- 
+
         $this->mpConfigMock = $this->getMockBuilder(MercadoPagoConfig::class)->disableOriginalConstructor()->getMock();
         $this->mpConfigMock->expects($this->any())
             ->method('getMpPaymentMethods')
@@ -228,9 +228,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->willReturn(PaymentMethodsResponseMock::SUCCESS_FALSE);
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -238,7 +238,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
         $result = $this->configProviderPaymentMethodsOff->getPaymentMethodsOffActive($storeId);
         $this->assertEmpty($result);
     }
-    
+
     public function testGetPaymentMethodsOffActiveNotEmpty(): void
     {
         $storeId = 1;
@@ -248,7 +248,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->method('getPaymentMethodsOffActive')
             ->with($storeId)
             ->willReturn(null);
- 
+
         $this->mpConfigMock = $this->getMockBuilder(MercadoPagoConfig::class)->disableOriginalConstructor()->getMock();
         $this->mpConfigMock->expects($this->any())
             ->method('getMpPaymentMethods')
@@ -256,9 +256,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->willReturn(PaymentMethodsResponseMock::WITH_PAYMENT_PLACES);
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -268,7 +268,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
     }
 
     public function testGetLogoEmpty(): void
-    { 
+    {
         $this->assetRepoMock = $this->getMockBuilder(Repository::class)->disableOriginalConstructor()->getMock();
         $this->assetRepoMock->expects($this->any())
             ->method('getUrl')
@@ -276,9 +276,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->willReturn(null);
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -288,7 +288,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
     }
 
     public function testGetLogoNotEmpty(): void
-    { 
+    {
         $this->assetRepoMock = $this->getMockBuilder(Repository::class)->disableOriginalConstructor()->getMock();
         $this->assetRepoMock->expects($this->any())
             ->method('getUrl')
@@ -296,9 +296,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->willReturn('images/boleto/logo.svg');
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -311,7 +311,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
     }
 
     public function testGetConfigEmpty(): void
-    { 
+    {
         $storeId = 1;
 
         $this->cartMock = $this->getMockBuilder(CartInterface::class)->disableOriginalConstructor()->getMock();
@@ -326,9 +326,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->willReturn(false);
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -338,7 +338,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
     }
 
     public function testGetConfigNotEmpty(): void
-    { 
+    {
         $storeId = 2;
 
         $this->cartMock = $this->getMockBuilder(CartInterface::class)->disableOriginalConstructor()->getMock();
@@ -377,7 +377,7 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->method('getUrl')
             ->with(ConfigProviderPaymentMethodsOff::PATH_LOGO)
             ->willReturn('images/boleto/logo.svg');
-        
+
         $this->mpConfigMock = $this->getMockBuilder(MercadoPagoConfig::class)->disableOriginalConstructor()->getMock();
         $this->mpConfigMock->expects($this->any())
             ->method('getMpPaymentMethods')
@@ -385,9 +385,9 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
             ->willReturn(PaymentMethodsResponseMock::WITH_PAYMENT_PLACES);
 
         $this->configProviderPaymentMethodsOff = new ConfigProviderPaymentMethodsOff(
-            $this->configMock, 
-            $this->cartMock, 
-            $this->escaperMock, 
+            $this->configMock,
+            $this->cartMock,
+            $this->escaperMock,
             $this->mpConfigMock,
             $this->assetRepoMock
         );
@@ -397,12 +397,12 @@ class ConfigProviderPaymentMethodsOffTest extends TestCase {
         $this->assertNotEmpty($result);
         $this->assertArrayHasKey('payment', $result);
         $this->assertArrayHasKey(ConfigPaymentMethodsOff::METHOD, $result['payment']);
-        $this->assertArrayHasKey('isActive', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
-        $this->assertArrayHasKey('title', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
-        $this->assertArrayHasKey('name_capture', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
-        $this->assertArrayHasKey('document_identification_capture', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
-        $this->assertArrayHasKey('expiration', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
-        $this->assertArrayHasKey('logo', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
-        $this->assertArrayHasKey('payment_methods_off_active', $result['payment'][ConfigPaymentMethodsOff::METHOD]);    
+        $this->assertArrayHasKey('isActive', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
+        $this->assertArrayHasKey('title', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
+        $this->assertArrayHasKey('name_capture', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
+        $this->assertArrayHasKey('document_identification_capture', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
+        $this->assertArrayHasKey('expiration', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
+        $this->assertArrayHasKey('logo', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
+        $this->assertArrayHasKey('payment_methods_off_active', $result['payment'][ConfigPaymentMethodsOff::METHOD]);
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Gateway\Config;
+namespace MercadoPago\AdbPayment\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Payment\Gateway\Config\Config as PaymentConfig;
 use Magento\Store\Model\ScopeInterface;
-use MercadoPago\PaymentMagento\Gateway\Data\Checkout\Fingerprint;
+use MercadoPago\AdbPayment\Gateway\Data\Checkout\Fingerprint;
 
 /**
  * Gateway setting for the payment method for Payment Method Off.
@@ -16,7 +16,7 @@ class ConfigPaymentMethodsOff extends PaymentConfig
     /**
      * Method Name.
      */
-    public const METHOD = 'mercadopago_paymentmagento_payment_methods_off';
+    public const METHOD = 'mercadopago_adbpayment_payment_methods_off';
 
     /**
      * Active.

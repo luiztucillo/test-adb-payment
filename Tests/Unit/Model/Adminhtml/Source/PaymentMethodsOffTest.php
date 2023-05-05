@@ -4,17 +4,17 @@ namespace Tests\Unit\Model\Adminhtml\Source;
 
 use PHPUnit\Framework\TestCase;
 
-use MercadoPago\PaymentMagento\Tests\Unit\Mocks\Gateway\Config\PaymentMethodsResponseMock;
-use MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff\MountPaymentMethodsOffMock;
-use MercadoPago\PaymentMagento\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff\ToOptionArrayMock;
+use MercadoPago\AdbPayment\Tests\Unit\Mocks\Gateway\Config\PaymentMethodsResponseMock;
+use MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff\MountPaymentMethodsOffMock;
+use MercadoPago\AdbPayment\Tests\Unit\Mocks\Model\Adminhtml\Source\PaymentMethodsOff\ToOptionArrayMock;
 
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
-use MercadoPago\PaymentMagento\Gateway\Config\Config as MercadoPagoConfig;
-use MercadoPago\PaymentMagento\Model\Adminhtml\Source\PaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\Config\Config as MercadoPagoConfig;
+use MercadoPago\AdbPayment\Model\Adminhtml\Source\PaymentMethodsOff;
 use Magento\Framework\App\RequestInterface;
 
 class PaymentMethodsOffTest extends TestCase {
-    
+
     /**
      * @var paymentMethodsOff
      */
@@ -43,7 +43,7 @@ class PaymentMethodsOffTest extends TestCase {
             ->method('getParam')
             ->with('store', 0)
             ->willReturn(1);
-        
+
         $this->methodsOffMock = $this->getMockBuilder(PaymentMethodsOff::class)->setConstructorArgs([
             'request' => $this->requestMock,
             'mercadopagoConfig' => $this->mpConfigMock
@@ -61,7 +61,7 @@ class PaymentMethodsOffTest extends TestCase {
      */
 
     public function testToOptionArrayJustDefaultValue(): void
-    {        
+    {
         $this->mpConfigMock->expects($this->any())
             ->method('getMpPaymentMethods')
             ->with(1)
@@ -153,12 +153,12 @@ class PaymentMethodsOffTest extends TestCase {
      */
 
     public function testMountPaymentMethodsOffEmpty(): void
-    {        
+    {
         $result = $this->paymentMethodsOff->mountPaymentMethodsOff([]);
 
         $this->assertEmpty($result);
     }
- 
+
     public function testMountPaymentMethodsOffWithoutPaymentPlaces(): void
     {
         $response = PaymentMethodsResponseMock::WITHOUT_PAYMENT_PLACES['response'];
@@ -166,7 +166,7 @@ class PaymentMethodsOffTest extends TestCase {
 
         $this->assertEquals(MountPaymentMethodsOffMock::EXPECTED_WITHOUT_PAYMENT_PLACES, $result);
     }
- 
+
     public function testMountPaymentMethodsOffWithPaymentPlaces(): void
     {
         $response = PaymentMethodsResponseMock::WITH_PAYMENT_PLACES['response'];
@@ -174,7 +174,7 @@ class PaymentMethodsOffTest extends TestCase {
 
         $this->assertEquals(MountPaymentMethodsOffMock::EXPECTED_WITH_PAYMENT_PLACES, $result);
     }
- 
+
     public function testMountPaymentMethodsOffWithoutPaymentPlacesAndWithInactive(): void
     {
         $response = PaymentMethodsResponseMock::WITHOUT_PAYMENT_PLACES_AND_WITH_INACTIVE['response'];
@@ -182,7 +182,7 @@ class PaymentMethodsOffTest extends TestCase {
 
         $this->assertEquals(MountPaymentMethodsOffMock::EXPECTED_WITHOUT_PAYMENT_PLACES_AND_WITH_INACTIVE, $result);
     }
- 
+
     public function testMountPaymentMethodsOffWithPaymentPlacesAndInactive(): void
     {
         $response = PaymentMethodsResponseMock::WITH_PAYMENT_PLACES_AND_INACTIVE['response'];

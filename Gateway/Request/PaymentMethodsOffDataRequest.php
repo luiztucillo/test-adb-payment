@@ -1,12 +1,12 @@
 <?php
 
-namespace MercadoPago\PaymentMagento\Gateway\Request;
+namespace MercadoPago\AdbPayment\Gateway\Request;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use MercadoPago\PaymentMagento\Gateway\Config\ConfigPaymentMethodsOff;
-use MercadoPago\PaymentMagento\Gateway\SubjectReader;
+use MercadoPago\AdbPayment\Gateway\Config\ConfigPaymentMethodsOff;
+use MercadoPago\AdbPayment\Gateway\SubjectReader;
 
 /**
  * Gateway Requests Payment by PaymentMethodsOff Data.

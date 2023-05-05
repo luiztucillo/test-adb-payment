@@ -2,11 +2,11 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Response;
+namespace MercadoPago\AdbPayment\Gateway\Response;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
@@ -156,7 +156,7 @@ class FetchPaymentHandler implements HandlerInterface
                 $payment->setAmountCanceled($amount);
                 $payment->setBaseAmountCanceled($baseAmount);
             }
-            
+
             if(!empty($response["multiple_payment_transaction_id"])){
 
                 $i = 0;
@@ -182,28 +182,28 @@ class FetchPaymentHandler implements HandlerInterface
                     self::MP_PAYMENT_ID,
                     $response["payments_details"][0][self::ID]
                 );
-    
+
                 $payment->setAdditionalInformation(
                     self::MP_PAYMENT_TYPE_ID,
                     $response["payments_details"][0][self::PAYMENT_TYPE_ID]
                 );
-    
+
                 $payment->setAdditionalInformation(
                     self::MP_INSTALLMENTS,
                     $response["payments_details"][0]["payment_method_info"][self::INSTALLMENTS]
                 );
-    
+
                 $payment->setAdditionalInformation(
                     self::MP_STATUS,
                     $response[self::STATUS]
                 );
-    
+
                 $payment->setAdditionalInformation(
                     self::MP_STATUS_DETAIL,
                     $response["payments_details"][0][self::STATUS_DETAIL]
                 );
-            }  
-            
+            }
+
         }
     }
 }

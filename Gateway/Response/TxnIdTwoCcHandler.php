@@ -2,11 +2,11 @@
 /**
  * Copyright © MercadoPago. All rights reserved.
  *
- * @author      Bruno Elisei <brunoelisei@o2ti.com>
+ * @author      Mercado Pago
  * @license     See LICENSE for license details.
  */
 
-namespace MercadoPago\PaymentMagento\Gateway\Response;
+namespace MercadoPago\AdbPayment\Gateway\Response;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
@@ -115,14 +115,14 @@ class TxnIdTwoCcHandler implements HandlerInterface
         $transactionInfo = [];
 
         for ($i = 0; $i < 2; $i++):
-            
+
             $cardType = str_replace('%', $i, self::CARD_TYPE);
             $cardNumber = str_replace('%', $i, self::CARD_NUMBER);
             $cardHolderName = str_replace('%', $i, self::CARD_HOLDER_NAME);
             $cardExpMonth = str_replace('%', $i, self::CARD_EXP_MONTH);
             $cardExpYear = str_replace('%', $i, self::CARD_EXP_YEAR);
             $cardNumberToken = str_replace('%', $i, self::NUMBER_TOKEN);
-            
+
             $cardInfo = [
                 $cardType        => $payment->getAdditionalInformation($cardType),
                 $cardNumber      => $payment->getAdditionalInformation($cardNumber),
@@ -143,9 +143,9 @@ class TxnIdTwoCcHandler implements HandlerInterface
                 str_replace('%', $i,'mp_%_status_detail'),
                 $response[self::TRANSACTION_INFO][$i][self::STATUS_DETAIL],
             );
-   
+
         endfor;
-        
+
         $payment->setTransactionInfo($transactionInfo);
     }
 }
