@@ -248,20 +248,20 @@ PayCash,PayCash
 "Maximum amount to pay with PayCash.","Valor máximo para pagamento com PayCash."
 "Casas Lotéricas","Casas Lotéricas"
 "Minimum amount to pay with Pec.","Valor mínimo para pagamento Pec."
-"Maximum amount to pay with Pec.","Valor mínimo para pagamento Pec."
+"Maximum amount to pay with Pec.","Valor máximo para pagamento Pec."
 Pse,Pse
 "Minimum amount to pay with Pse.","Valor mínimo para pagamento Pse."
-"Maximum amount to pay with Pse.","Valor mínimo para pagamento Pse."
+"Maximum amount to pay with Pse.","Valor máximo para pagamento Pse."
 "Rapi Pago","Rapi Pago"
 Redpagos,Redpagos
 "Minimum amount to pay with Redpagos.","Valor mínimo para pagamento Redpagos."
-"Maximum amount to pay with Redpagos.","Valor mínimo para pagamento Redpagos."
+"Maximum amount to pay with Redpagos.","Valor máximo para pagamento Redpagos."
 Serfin,Serfin
 "Minimum amount to pay with Serfin.","Valor mínimo para pagamento Serfin."
-"Maximum amount to pay with Serfin.","Valor mínimo para pagamento Serfin."
+"Maximum amount to pay with Serfin.","Valor máximo para pagamento Serfin."
 Webpay,Webpay
 "Minimum amount to pay with Webpay.","Valor mínimo para pagamento Webpay."
-"Maximum amount to pay with Webpay.","Valor mínimo para pagamentoh Webpay."
+"Maximum amount to pay with Webpay.","Valor máximo para pagamento Webpay."
 "Store information hosted in Mercado Pago","Informações da loja no Mercado Pago"
 "User Id","User Id"
 "User Email","User Email"
