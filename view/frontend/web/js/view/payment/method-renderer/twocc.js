@@ -106,6 +106,7 @@ define([
 
             self.inputValueProgress.subscribe((value) => {
                 self.installmentsAmount(value);
+                self.validateMinValue(value);
             });
 
             self.installmentsAmount.subscribe((value) => {

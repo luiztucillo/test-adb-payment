@@ -1287,3 +1287,4 @@ site_disabled.,site_disabled.
 "Your order # is: <span>%1</span>.","Your order # is: <span>%1</span>!"
 "By continuing, you agree to our ","By continuing, you agree to our "
 "Terms and Conditions.","Terms and Conditions."
+"Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1.","Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1."

@@ -1274,3 +1274,4 @@ site_disabled.,site_disabled.
 "Your order # is: <span>%1</span>.","Recibimos su pedido: <span>%1</span>!"
 "By continuing, you agree to our ","Al continuar aceptas nuestros "
 "Terms and Conditions.","Términos y Condiciones."
+"Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1.", "Monto mínimo de transacción no permitido para la Bandera elegida. Elija otra Bandera o realice una compra superior a %1."

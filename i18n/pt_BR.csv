@@ -1300,3 +1300,4 @@ Expiration,Expiração
 "Your order # is: <span>%1</span>.","Recebemos seu pedido: <span>%1</span>!"
 "By continuing, you agree to our ","Ao continuar você aceita nossos "
 "Terms and Conditions.","Termos e Condições."
+"Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1.", "Valor mínimo da transação não permitido para a bandeira escolhida. Por favor escolha outra bandeira ou faça uma compra acima de %1."

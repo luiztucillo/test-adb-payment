@@ -148,7 +148,7 @@ abstract class MpIndex extends Action
         CreditmemoService $creditMemoService,
         Invoice $invoice,
         CheckoutProAddChildPayment $addChildPayment,
-        ZendClientFactory $httpClientFactory,
+        ZendClientFactory $httpClientFactory
     ) {
         parent::__construct($context);
         $this->config = $config;
