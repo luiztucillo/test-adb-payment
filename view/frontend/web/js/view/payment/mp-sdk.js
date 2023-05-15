@@ -87,10 +87,10 @@ define([
             let self = this;
 
             this._super();
+            
+            self.amount(self.FormattedCurrencyToInstallments(quote.totals().base_grand_total));
 
-            self.amount(quote.totals().base_grand_total);
-
-            self.installmentsAmount(quote.totals().base_grand_total);
+            self.installmentsAmount(self.FormattedCurrencyToInstallments(quote.totals().base_grand_total));
 
             self.mpCardInstallment.subscribe((value) => {
                 self.addFinanceCost();
@@ -425,7 +425,7 @@ define([
 
             self.installmentWasCalculated(false);
 
-            if (self.installmentsAmount() == '' || self.installmentsAmount() > self.amount()) {
+            if (self.installmentsAmount() == '' || self.installmentsAmount() > self.FormattedCurrencyToInstallments(self.amount())) {
                 self.installmentSelected = null;
                 self.mpCardInstallment(null);
                 return;
@@ -475,6 +475,14 @@ define([
                     }
                 });
             });
+        },
+        
+        formatedAmountWithSymbol(amount) {
+            return this.currencySymbol() + ' ' + amount;
+        },
+
+        currencySymbol() {
+            return priceUtils.formatPrice().replaceAll(/[0-9\s\.\,]/g, '');
         },
 
         /**
@@ -640,11 +648,11 @@ define([
         /**
          * Formatted Currency to Installments
          * @param {Float} amount
-         * @return {Boolean}
+         * @return {Float}
          */
         FormattedCurrencyToInstallments(amount) {
-            if (this.getMpSiteId() === 'MCO') {
-                return parseFloat(amount).toFixed(0);
+            if (this.getMpSiteId() === 'MCO' || this.getMpSiteId() === 'MLC') {
+                return parseFloat(amount ? amount : 0).toFixed(0);
             }
             return amount;
         },
@@ -683,7 +691,7 @@ define([
          * @returns {Jquery}
          */
         validateMinValue(amount) {
-            var message = $t('Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1.').replace('%1', priceUtils.formatPrice(this.minAllowedAmount));
+            var message = $t('Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1.').replace('%1', this.formatedAmountWithSymbol(this.minAllowedAmount));
 
             $('.mp-message-error').remove();
 

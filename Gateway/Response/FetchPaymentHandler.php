@@ -129,6 +129,7 @@ class FetchPaymentHandler implements HandlerInterface
             $payment = $paymentDO->getPayment();
 
             $order = $payment->getOrder();
+
             $amount = $order->getGrandTotal();
             $baseAmount = $order->getBaseGrandTotal();
 
