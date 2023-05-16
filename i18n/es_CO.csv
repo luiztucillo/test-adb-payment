@@ -238,6 +238,7 @@ Webpay,Webpay
 "Pix QR Code","Código QR do pix"
 "Pix Code","Código de pix"
 "The order %1, was refunded directly on Mercado Pago, you need to check stock of sold items.","El pedido %1 ha sido reembolsado directamente en el Mercado Pago, debe verificar su inventario de productos vendidos."
+"The order %1, was refunded directly on Mercado Pago, but an error occured when refunding offline, you need to check order refunds and stock of sold items.","El pedido %1, fue reembolsado directamente en Mercado Pago, pero ocurrió un error al reembolsar fuera de línea, debe consultar las devoluciones del pedido y el stock de artículos vendidos."
 "Order refunded in Mercado Pago, refunded offline in the store.","Solicitud reembolsada del Mercado Pago, reembolsado offline creado en la tienda."
 "Order refunded.","Solicitud refactada.."
 "API Integration","Integración de API"

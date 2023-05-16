@@ -238,6 +238,7 @@ Webpay,Webpay
 "Pix QR Code","Pix QR Code"
 "Pix Code","Pix Code"
 "The order %1, was refunded directly on Mercado Pago, you need to check stock of sold items.","The order %1, was refunded directly on Mercado Pago, you need to check stock of sold items."
+"The order %1, was refunded directly on Mercado Pago, but an error occured when refunding offline, you need to check order refunds and stock of sold items.","The order %1, was refunded directly on Mercado Pago, but an error occured when refunding offline, you need to check order refunds and stock of sold items."
 "Order refunded in Mercado Pago, refunded offline in the store.","Order refunded in Mercado Pago, refunded offline in the store."
 "Order refunded.","Order refunded."
 "API Integration","API Integration"
