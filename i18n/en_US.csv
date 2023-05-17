@@ -368,3 +368,4 @@ Webpay,Webpay
 "Your credentials are incorrect. Test credentials have been filled in and should be used in sandbox mode. Please check the credentials again.","Your credentials are incorrect. Test credentials have been filled in and should be used in sandbox mode. Please check the credentials again."
 "Your credentials are incorrect. Production credentials have been filled in and should be used in production mode. Please check the credentials again.","Your credentials are incorrect. Production credentials have been filled in and should be used in production mode. Please check the credentials again."
 "Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1.","Minimum transaction amount not allowed for the chosen brand. Please choose another flag or make a purchase over %1."
+"Download the Boleto", "Download the Boleto"
