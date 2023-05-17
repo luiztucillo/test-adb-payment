@@ -848,7 +848,7 @@
             <argument name="handlers" xsi:type="array">
                 <item name="extOrdId" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\ExtOrdIdHandler</item>
                 <item name="txnIdCc" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\TxnIdTwoCcHandler</item>
-                <item name="transaction" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\CcTransactionAuthorizationHandler</item>
+                <item name="transaction" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\TwoCcTransactionAuthorizationHandler</item>
             </argument>
         </arguments>
     </virtualType>
@@ -872,7 +872,7 @@
             <argument name="handlers" xsi:type="array">
                 <item name="extOrdId" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\ExtOrdIdHandler</item>
                 <item name="txnIdCc" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\TxnIdTwoCcHandler</item>
-                <item name="transaction" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\CcTransactionAuthorizationHandler</item>
+                <item name="transaction" xsi:type="string">MercadoPago\AdbPayment\Gateway\Response\TwoCcTransactionAuthorizationHandler</item>
             </argument>
         </arguments>
     </virtualType>
