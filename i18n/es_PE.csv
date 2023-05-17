@@ -305,7 +305,7 @@ Webpay,Webpay
 "expirationMonth value should be greater than '%1' or expirationYear value should be greater than '%2'.", "Mes de vencimiento o el valor del año de vencimiento no es válido."
 "cardNumber should be of length '16'.","Número de la tarjeta debe ser de longitud 16."
 "Pay with two cards","Pagar con dos tarjetas"
-"Payment with credit cards","Pago con dos tarjetas"
+"Payment with two cards","Pago con dos tarjetas"
 "Interest-free","Sin interés"
 "Your Bank will apply Interest","Tu Banco aplicará Intereses"
 "Complete your order to proceed with payment.","Finaliza tu pedido para proceder con el pago."
