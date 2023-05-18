@@ -29,6 +29,7 @@ use Magento\Sales\Model\Service\CreditmemoService;
 use MercadoPago\AdbPayment\Gateway\Config\Config;
 use MercadoPago\AdbPayment\Model\Console\Command\Notification\CheckoutProAddChildPayment;
 use MercadoPago\AdbPayment\Model\Console\Command\Notification\FetchStatus;
+use Magento\Sales\Model\Order\Payment\Transaction;
 
 /**
  * Class Mercado Pago Index.
@@ -360,9 +361,22 @@ abstract class MpIndex extends Action
             $invoice = $this->invoice->loadByIncrementId($invoice->getIncrementId());
             $creditMemo = $this->creditMemoFactory->createByOrder($order);
 
+            $payment = $order->getPayment();
+            $transacId = $payment->getLastTransId();
+            $payment->setTransactionId($transacId."-refund");
+            $payment->setParentTransactionId($transacId);
+            $payment->setIsTransactionClosed(true);
+            $payment->setShouldCloseParentTransaction(true);
+
             if ($mpAmountRefound < $creditMemo->getBaseGrandTotal()) {
+                $payment->setIsTransactionClosed(false);
+                $payment->setShouldCloseParentTransaction(false);
                 $creditMemo->setItems([]);
             }
+
+            $payment->addTransaction(Transaction::TYPE_REFUND);
+            $order->save();
+            
             $creditMemo->setState(1);
             $creditMemo->setBaseGrandTotal($mpAmountRefound);
             $creditMemo->setGrandTotal($mpAmountRefound);
