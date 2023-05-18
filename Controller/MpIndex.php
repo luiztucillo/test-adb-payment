@@ -225,7 +225,8 @@ abstract class MpIndex extends Action
         $mpStatus,
         $order,
         $mpAmountRefound = null,
-        $origin = null
+        $origin = null,
+        $refundId = null
     ) {
         $result = [];
 
@@ -253,7 +254,7 @@ abstract class MpIndex extends Action
                 $applyRefund = $this->config->isApplyRefund($storeId);
 
                 if ($applyRefund) {
-                    $result = $this->refund($order, $mpAmountRefound);
+                    $result = $this->refund($order, $mpAmountRefound, $refundId);
 
                     $header = __('Mercado Pago, refund notification');
 
@@ -349,7 +350,8 @@ abstract class MpIndex extends Action
      */
     public function refund(
         OrderInterface $order,
-        $mpAmountRefound = null
+        $mpAmountRefound = null,
+        $refundId = null
     ) {
         $invoices = $order->getInvoiceCollection();
 
