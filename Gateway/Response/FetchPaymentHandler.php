@@ -129,37 +129,37 @@ class FetchPaymentHandler implements HandlerInterface
     public const PAYMENT_ID = 'payment_%_id';
 
     /**
-     * Card Type - Payment Addtional Information.
+     * Payment Type - Payment Addtional Information.
      */
     public const PAYMENT_TYPE = 'payment_%_type';
 
     /**
-     * Card Number - Payment Addtional Information.
+     * Payment Card Number - Payment Addtional Information.
      */
     public const PAYMENT_CARD_NUMBER = 'payment_%_card_number';
 
     /**
-     * Card Holder Name - Payment Addtional Information.
+     * Payment Installments - Payment Addtional Information.
      */
     public const PAYMENT_INSTALLMENTS = 'payment_%_installments';
     
     /**
-     * Card Total Amount - Payment Addtional Information.
+     * Payment Total Amount - Payment Addtional Information.
      */
     public const PAYMENT_TOTAL_AMOUNT = 'payment_%_total_amount';
 
     /**
-     * Card Paid Amount - Payment Addtional Information.
+     * Payment Paid Amount - Payment Addtional Information.
      */
     public const PAYMENT_PAID_AMOUNT = 'payment_%_paid_amount';
 
     /**
-     * Card MP Status block name.
+     * Payment Status - Payment Addtional Information.
      */
     public const PAYMENT_STATUS = 'mp_%_status';
 
     /**
-     * Card Status response value.
+     * Payment Status Detail- Payment Addtional Information.
      */
     public const PAYMENT_STATUS_DETAIL = 'mp_%_status_detail';
 
@@ -243,6 +243,8 @@ class FetchPaymentHandler implements HandlerInterface
 
     /**
      * Get index of payment by payment id.
+     * @param $payment
+     * @param $paymentId
      * 
      * @return int|null
      */
@@ -262,6 +264,10 @@ class FetchPaymentHandler implements HandlerInterface
 
     /**
      * Update payment by index.
+     * @param $payment
+     * @param $index
+     * @param $mpPayment
+     * 
      * Return void.
      */
     public function updatePaymentByIndex(
