@@ -346,7 +346,7 @@ abstract class MpIndex extends Action
      *
      * @throws \Magento\Framework\Exception\LocalizedException
      *
-     * @return array
+     * @return array|null
      */
     public function refund(
         OrderInterface $order,

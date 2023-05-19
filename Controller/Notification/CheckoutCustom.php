@@ -152,10 +152,10 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
         $refundId = null;
 
         foreach ($transactions as $transaction) {
-
             if ($mpStatus == 'approved' && $transaction->getTxnType() == 'capture') {
                 continue;
             }
+
             $order = $this->getOrderData($transaction->getOrderId());
             
             if ($mpStatus === 'refunded') {

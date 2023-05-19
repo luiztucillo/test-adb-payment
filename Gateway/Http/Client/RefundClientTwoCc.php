@@ -141,6 +141,8 @@ class RefundClientTwoCc implements ClientInterface
 
       $refundIds = [];
 
+      $status = null;
+
       foreach ($data as $arrayData) {
 
         if (isset($arrayData[self::RESPONSE_REFUND_ID])) {

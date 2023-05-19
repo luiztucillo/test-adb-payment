@@ -88,7 +88,7 @@ class CcTransactionAuthorizationHandler implements HandlerInterface
 
         $transactionId = $response[self::RESPONSE_PAYMENT_ID];
 
-        if ($status === self::AUTHORIZED || $status === self::APPROVED ) {
+        if ($status === self::AUTHORIZED || $status === self::APPROVED) {
             $isApproved = true;
             $isDenied = false;
 
@@ -102,6 +102,5 @@ class CcTransactionAuthorizationHandler implements HandlerInterface
             $payment->setTransactionDetails($this->json->serialize($response));
             $payment->setAdditionalData($this->json->serialize($response));
         }
-
     }
 }
