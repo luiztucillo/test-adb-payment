@@ -226,7 +226,7 @@ abstract class MpIndex extends Action
         $order,
         $mpAmountRefound = null,
         $origin = null,
-        $refundId = null
+        $refundId
     ) {
         $result = [];
 
@@ -351,7 +351,7 @@ abstract class MpIndex extends Action
     public function refund(
         OrderInterface $order,
         $mpAmountRefound = null,
-        $refundId = null
+        $refundId
     ) {
         $invoices = $order->getInvoiceCollection();
 
@@ -364,15 +364,10 @@ abstract class MpIndex extends Action
             $creditMemo = $this->creditMemoFactory->createByOrder($order);
 
             $payment = $order->getPayment();
-            $transacId = $payment->getLastTransId();
-            $payment->setTransactionId($transacId."-refund");
-            $payment->setParentTransactionId($transacId);
+            $payment->setTransactionId($refundId);
             $payment->setIsTransactionClosed(true);
-            $payment->setShouldCloseParentTransaction(true);
-
+            
             if ($mpAmountRefound < $creditMemo->getBaseGrandTotal()) {
-                $payment->setIsTransactionClosed(false);
-                $payment->setShouldCloseParentTransaction(false);
                 $creditMemo->setItems([]);
             }
 

@@ -233,7 +233,7 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
         $notificationId,
         $mpAmountRefund = null,
         $origin = null,
-        $refundId = null
+        $refundId
     ) {
         $result = [];
 

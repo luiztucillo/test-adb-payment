@@ -294,7 +294,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         $mpAmountRefund = null,
         $mercadopagoData = null,
         $origin = null,
-        $refundId = null
+        $refundId
     ) {
         $result = [];
 
