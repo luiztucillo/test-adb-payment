@@ -224,9 +224,9 @@ abstract class MpIndex extends Action
     public function filterInvalidNotification(
         $mpStatus,
         $order,
+        $refundId,
         $mpAmountRefound = null,
-        $origin = null,
-        $refundId
+        $origin = null
     ) {
         $result = [];
 
@@ -254,7 +254,7 @@ abstract class MpIndex extends Action
                 $applyRefund = $this->config->isApplyRefund($storeId);
 
                 if ($applyRefund) {
-                    $result = $this->refund($order, $mpAmountRefound, $refundId);
+                    $result = $this->refund($order, $refundId, $mpAmountRefound);
 
                     $header = __('Mercado Pago, refund notification');
 
@@ -350,8 +350,8 @@ abstract class MpIndex extends Action
      */
     public function refund(
         OrderInterface $order,
-        $mpAmountRefound = null,
-        $refundId
+        $refundId,
+        $mpAmountRefound = null
     ) {
         $invoices = $order->getInvoiceCollection();
 
@@ -366,14 +366,14 @@ abstract class MpIndex extends Action
             $payment = $order->getPayment();
             $payment->setTransactionId($refundId);
             $payment->setIsTransactionClosed(true);
-            
+
             if ($mpAmountRefound < $creditMemo->getBaseGrandTotal()) {
                 $creditMemo->setItems([]);
             }
 
             $payment->addTransaction(Transaction::TYPE_REFUND);
             $order->save();
-            
+
             $creditMemo->setState(1);
             $creditMemo->setBaseGrandTotal($mpAmountRefound);
             $creditMemo->setGrandTotal($mpAmountRefound);
