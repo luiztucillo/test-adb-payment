@@ -186,9 +186,7 @@
                 <group>mercadopago_group</group>
                 <expiration>1</expiration>
                 <binary_mode>1</binary_mode>
-                <instruction_checkout><![CDATA[Pague com o meio de pagamento que preferir e toda a <strong>segurança do Mercado Pago</strong>.
-Se você já tem conta no Mercado Livre, use o mesmo e-mail e senha.
-Use seu saldo do Mercado Pago ou cartões salvos para comprar sem preencher mais dados.]]></instruction_checkout>
+                <instruction_checkout translate="true"><![CDATA[Pay with the method of payment you prefer and all the <strong>security of Mercado Pago</strong>.</br>If you already have an account at Mercado Livre, use the same email and password.</br>Use your Mercado Pago account balance or saved cards to buy without filling out more details.]]></instruction_checkout>
                 <type_redirect>modal</type_redirect>
                 <max_installments>12</max_installments>
                 <theme_header>#2c99f2</theme_header>
@@ -260,9 +258,7 @@ Use seu saldo do Mercado Pago ou cartões salvos para comprar sem preencher mais
                 <can_fetch_transaction_information>1</can_fetch_transaction_information>
                 <group>mercadopago_group</group>
                 <expiration>30</expiration>
-                <instruction_checkout><![CDATA[Pagamentos com <strong>aprovação imediata</strong>.
-O prazo de pagamento é de até <strong>%1</strong>.
-Ao finalizar a compra, você receberá o código para fazer o pagamento no banco que escolher (consulte seu banco para saber seu limite diário de transferência por Pix).]]></instruction_checkout>
+                <instruction_checkout translate="true"><![CDATA[Payments with <strong>immediate approval</strong>.<br>The payment term is up to <strong>%1</strong>.<br>At checkout, you will receive the code to make payment at the bank of your choice (check with your bank for your daily Pix transfer limit).]]></instruction_checkout>
                 <get_document_identification>0</get_document_identification>
                 <min_order_total>1</min_order_total>
                 <max_order_total>200000</max_order_total>
