@@ -99,7 +99,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
                 $url = $this->config->getApiUrl();
                 $clientConfigs = $this->config->getClientConfigs();
                 $clientHeaders = $this->config->getClientHeaders($storeId);
-                
+
                 $client->setUri($url.'/v1/asgard/notification/'.$notificationId);
                 $client->setConfig($clientConfigs);
                 $client->setHeaders($clientHeaders);
@@ -145,7 +145,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         $process = [];
         $resultData = [];
         $refundId = null;
-        
+
         foreach ($transactions as $transaction) {
             $order = $this->getOrderData($transaction->getOrderId());
             $payment = $order->getPayment();
@@ -171,14 +171,14 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
                                 $mpStatus,
                                 $childTransactionId,
                                 $order,
+                                $refundId,
                                 $mpAmountRefund,
                                 $mercadopagoData,
-                                $origin,
-                                $refundId
+                                $origin
                             );
-                                
+
                             array_push($resultData, $process['msg']);
-                            
+
                             if ($process['code'] !== 200) {
                                 /** @var ResultInterface $result */
                                 return $this->createResult(
@@ -195,14 +195,14 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
                     $mpStatus,
                     $childTransactionId,
                     $order,
+                    $refundId,
                     $mpAmountRefund,
                     $mercadopagoData,
-                    $origin,
-                    $refundId
+                    $origin
                 );
 
                 array_push($resultData, $process['msg']);
-                            
+
                 if ($process['code'] !== 200) {
                     /** @var ResultInterface $result */
                     return $this->createResult(
@@ -291,14 +291,14 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         $mpStatus,
         $childTransactionId,
         $order,
+        $refundId,
         $mpAmountRefund = null,
         $mercadopagoData = null,
-        $origin = null,
-        $refundId
+        $origin = null
     ) {
         $result = [];
 
-        $isNotApplicable = $this->filterInvalidNotification($mpStatus, $order, $mpAmountRefund, $origin, $refundId);
+        $isNotApplicable = $this->filterInvalidNotification($mpStatus, $order, $refundId, $mpAmountRefund, $origin);
 
         if ($isNotApplicable['isInvalid']) {
             if (strcmp($isNotApplicable['msg'], 'Refund notification for order refunded directly in Mercado Pago.')) {

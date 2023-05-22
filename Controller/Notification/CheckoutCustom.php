@@ -74,7 +74,7 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
         $notificationId = $mercadopagoData['notification_id'];
         $paymentsDetails = $mercadopagoData['payments_details'];
         $respData = null;
-        
+
         if ($mpStatus === 'refunded') {
             try {
                 /** @var ZendClient $client */
@@ -83,7 +83,7 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
                 $url = $this->config->getApiUrl();
                 $clientConfigs = $this->config->getClientConfigs();
                 $clientHeaders = $this->config->getClientHeaders($storeId);
-                
+
                 $client->setUri($url.'/v1/asgard/notification/'.$notificationId);
                 $client->setConfig($clientConfigs);
                 $client->setHeaders($clientHeaders);
@@ -109,7 +109,7 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
         return $this->initProcess($mpTransactionId, $mpStatus, $notificationId, $paymentsDetails, $respData);
     }
 
-    
+
     /**
      * Init Process.
      *
@@ -157,7 +157,7 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
             }
 
             $order = $this->getOrderData($transaction->getOrderId());
-            
+
             if ($mpStatus === 'refunded') {
                 foreach ($paymentsDetails as $paymentsDetail) {
                     $refunds = $paymentsDetail['refunds'];
@@ -173,10 +173,10 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
                             $mpAmountRefund = $refundNotifying['amount'];
                             $refundId = $refundNotifying['id'];
 
-                            $process = $this->processNotification($mpStatus, $order, $notificationId, $mpAmountRefund, $origin, $refundId);
-                            
+                            $process = $this->processNotification($mpStatus, $order, $notificationId, $refundId, $mpAmountRefund, $origin);
+
                             array_push($resultData, $process['msg']);
-                            
+
                             if ($process['code'] !== 200) {
                                 /** @var ResultInterface $result */
                                 return $this->createResult(
@@ -188,10 +188,10 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
                     }
                 }
             } else {
-                $process = $this->processNotification($mpStatus, $order, $notificationId, $mpAmountRefund, $origin, $refundId);
-                
+                $process = $this->processNotification($mpStatus, $order, $notificationId, $refundId, $mpAmountRefund, $origin);
+
                 array_push($resultData, $process['msg']);
-                            
+
                 if ($process['code'] !== 200) {
                     /** @var ResultInterface $result */
                     return $this->createResult(
@@ -231,13 +231,13 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
         $mpStatus,
         $order,
         $notificationId,
+        $refundId,
         $mpAmountRefund = null,
-        $origin = null,
-        $refundId
+        $origin = null
     ) {
         $result = [];
 
-        $isNotApplicable = $this->filterInvalidNotification($mpStatus, $order, $mpAmountRefund, $origin, $refundId);
+        $isNotApplicable = $this->filterInvalidNotification($mpStatus, $order, $refundId, $mpAmountRefund, $origin);
 
         if ($isNotApplicable['isInvalid']) {
             if (
