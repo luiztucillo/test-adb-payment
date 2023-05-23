@@ -154,6 +154,11 @@ class FetchPaymentHandler implements HandlerInterface
     public const PAYMENT_PAID_AMOUNT = 'payment_%_paid_amount';
 
     /**
+     * Payment Refund Amount - Payment Addtional Information.
+     */
+    public const PAYMENT_REFUNDED_AMOUNT = 'payment_%_refunded_amount';
+
+    /**
      * Payment Status - Payment Addtional Information.
      */
     public const PAYMENT_STATUS = 'mp_%_status';
@@ -222,10 +227,16 @@ class FetchPaymentHandler implements HandlerInterface
                 }
             } else {
                 $i = 0;
+                $paymentIndexList = [];
                 foreach ($response[self::PAYMENT_DETAILS] as $mpPayment) {
                     $this->updatePaymentByIndex($payment, $i, $mpPayment);
+                    array_push($paymentIndexList, $i);
                     $i++;
                 }
+                $payment->setAdditionalInformation(
+                    'payment_index_list',
+                    $paymentIndexList
+                );
             }
 
             $payment->setAdditionalInformation(
@@ -281,6 +292,7 @@ class FetchPaymentHandler implements HandlerInterface
         $cardInstallments = str_replace('%', $index, self::PAYMENT_INSTALLMENTS);
         $cardTotalAmount = str_replace('%', $index, self::PAYMENT_TOTAL_AMOUNT);
         $cardPaidAmount = str_replace('%', $index, self::PAYMENT_PAID_AMOUNT);
+        $cardRefundedAmount = str_replace('%', $index, self::PAYMENT_REFUNDED_AMOUNT);
         $mpStatus = str_replace('%', $index, self::PAYMENT_STATUS);
         $mpStatusDetail = str_replace('%', $index, self::PAYMENT_STATUS_DETAIL);
 
@@ -302,6 +314,13 @@ class FetchPaymentHandler implements HandlerInterface
         $payment->setAdditionalInformation(
             $cardPaidAmount,
             $mpPayment[self::PAID_AMOUNT]
+        );
+
+        $value = $payment->getAdditionalInformation($cardRefundedAmount) ?? 0;
+
+        $payment->setAdditionalInformation(
+            $cardRefundedAmount,
+            $value
         );
 
         $payment->setAdditionalInformation(
