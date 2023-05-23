@@ -221,11 +221,11 @@ class RefundClient implements ClientInterface
         array $clientHeaders
     ) {
         $paymentIndexList = $order['payment']['additional_information']['payment_index_list'];
-        // split amount in cards, if no amount provided, uses total paid amount
-        $amountToRefund = isset($request['amount']) ? $request['amount'] : $payment->getAmountPaid();
+        $payment = $order->getPayment();
+        $remainingAmount = $payment->getAmountPaid() - $payment->getAmountRefunded();
+        $amountToRefund = isset($request['amount']) ? $request['amount'] : $remainingAmount;
         $metadata = ['origem' => self::NOTIFICATION_ORIGIN];
         $response = [];
-        $payment = $order->getPayment();
 
         foreach($paymentIndexList as $paymentIndex) {
             $cardRefundedAmount = str_replace('%', $paymentIndex, self::PAYMENT_REFUNDED_AMOUNT);
@@ -234,8 +234,8 @@ class RefundClient implements ClientInterface
 
             $paymentAmount = $paymentAddInfo[str_replace('%', $paymentIndex, self::PAYMENT_TOTAL_AMOUNT)];
             $paymentRefundedAmount = $paymentAddInfo[$cardRefundedAmount];
-            if ($amountToRefund > $paymentAmount - $paymentRefundedAmount) { // value left to refund in this payment
-                $request['amount'] = $paymentAmount - $paymentRefundedAmount; // value to refund in this payment
+            if ($amountToRefund > $paymentAmount - $paymentRefundedAmount) {
+                $request['amount'] = $paymentAmount - $paymentRefundedAmount;
             } else {
                 $request['amount'] = $amountToRefund;
             }
