@@ -10,13 +10,12 @@ namespace MercadoPago\AdbPayment\Gateway\Http\Client;
 
 use Exception;
 use InvalidArgumentException;
-use Magento\Framework\HTTP\ZendClient;
-use Magento\Framework\HTTP\ZendClientFactory;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
 use MercadoPago\AdbPayment\Gateway\Config\Config;
+use MercadoPago\AdbPayment\Model\MPApi\Notification;
 
 /**
  * Communication with the Gateway to seek Payment information.
@@ -69,11 +68,6 @@ class FetchPaymentClient implements ClientInterface
     protected $logger;
 
     /**
-     * @var ZendClientFactory
-     */
-    protected $httpClientFactory;
-
-    /**
      * @var Config
      */
     protected $config;
@@ -83,22 +77,23 @@ class FetchPaymentClient implements ClientInterface
      */
     protected $json;
 
+    protected Notification $mpApiNotification;
+
     /**
      * @param Logger            $logger
-     * @param ZendClientFactory $httpClientFactory
      * @param Config            $config
      * @param Json              $json
      */
     public function __construct(
         Logger $logger,
-        ZendClientFactory $httpClientFactory,
         Config $config,
-        Json $json
+        Json $json,
+        Notification $mpApiNotification
     ) {
         $this->config = $config;
-        $this->httpClientFactory = $httpClientFactory;
         $this->logger = $logger;
         $this->json = $json;
+        $this->mpApiNotification = $mpApiNotification;
     }
 
     /**
@@ -110,23 +105,16 @@ class FetchPaymentClient implements ClientInterface
      */
     public function placeRequest(TransferInterface $transferObject)
     {
-        /** @var ZendClient $client */
-        $client = $this->httpClientFactory->create();
         $request = $transferObject->getBody();
         $storeId = $request[self::STORE_ID];
-        $url = $this->config->getApiUrl();
-        $clientConfigs = $this->config->getClientConfigs();
-        $clientHeaders = $this->config->getClientHeaders($storeId);
+
         $paymentId = $request[self::MP_PAYMENT_ID];
+
         $notificationId = $request[self::NOTIFICATION_ID];
 
         try {
-            $client->setUri($url.'/v1/asgard/notification/'.$notificationId);
-            $client->setConfig($clientConfigs);
-            $client->setHeaders($clientHeaders);
-            $client->setMethod(ZendClient::GET);
-            $responseBody = $client->request()->getBody();
-            $data = $this->json->unserialize($responseBody);
+            $data = $this->mpApiNotification->get($notificationId, $storeId);
+
             $response = array_merge(
                 [
                     self::RESULT_CODE  => 0,

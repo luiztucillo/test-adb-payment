@@ -13,7 +13,6 @@ use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\HTTP\ZendClient;
 use MercadoPago\AdbPayment\Controller\MpIndex;
 
 /**
@@ -66,45 +65,23 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
             );
         }
 
-        $mpAmountRefund = null;
-        $response = $this->getRequest()->getContent();
-        $mercadopagoData = $this->json->unserialize($response);
+        $respData = null;
+
+        $this->logger->debug([
+            'action'    => 'checkout_custom',
+            'payload'   => $this->getRequest()->getContent()
+        ]);
+
+        $mercadopagoData = $this->loadNotificationData();
+
         $mpTransactionId = $mercadopagoData['transaction_id'];
         $mpStatus = $mercadopagoData['status'];
         $notificationId = $mercadopagoData['notification_id'];
         $paymentsDetails = $mercadopagoData['payments_details'];
-        $respData = null;
 
-        if ($mpStatus === 'refunded') {
-            try {
-                /** @var ZendClient $client */
-                $client = $this->httpClientFactory->create();
-                $storeId = $mercadopagoData["payments_metadata"]["store_id"];
-                $url = $this->config->getApiUrl();
-                $clientConfigs = $this->config->getClientConfigs();
-                $clientHeaders = $this->config->getClientHeaders($storeId);
-
-                $client->setUri($url.'/v1/asgard/notification/'.$notificationId);
-                $client->setConfig($clientConfigs);
-                $client->setHeaders($clientHeaders);
-                $client->setMethod(ZendClient::GET);
-                $responseBody = $client->request()->getBody();
-                $respData = $this->json->unserialize($responseBody);
-                if (
-                    !empty($respData["multiple_payment_transaction_id"])
-                ) {
-                    $mpTransactionId = $respData["multiple_payment_transaction_id"];
-                }
-
-            } catch (Exception $e) {
-                    $this->logger->debug(['exception' => $e->getMessage()]);
-            }
+        if ($mpStatus === 'refunded' && !empty($mercadopagoData["multiple_payment_transaction_id"])) {
+            $mpTransactionId = $respData["multiple_payment_transaction_id"];
         }
-
-        $this->logger->debug([
-            'action'    => 'checkout_custom',
-            'payload'   => $response
-        ]);
 
         return $this->initProcess($mpTransactionId, $mpStatus, $notificationId, $paymentsDetails, $respData);
     }
