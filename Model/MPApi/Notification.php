@@ -46,6 +46,14 @@ class Notification {
 
         $responseBody = $client->request()->getBody();
 
+        if ($client->request()->getStatus() > 299) {
+            $this->logger->debug([
+                'url'      => $url.'/v1/asgard/notification/'.$notificationId,
+                'response' => $responseBody
+            ]);
+            throw new \Exception("Invalid request to asgard notification: " . $responseBody);
+        }
+
         $data = $this->json->unserialize($responseBody);
 
         $this->logger->debug(

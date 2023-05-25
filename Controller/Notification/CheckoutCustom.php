@@ -65,9 +65,17 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
             );
         }
 
-        $respData = null;
-
-        $mercadopagoData = $this->loadNotificationData();
+        try {
+            $mercadopagoData = $this->loadNotificationData();
+        } catch(\Exception $e) {
+            return $this->createResult(
+                500,
+                [
+                    'error'   => 500,
+                    'message' => $e->getMessage(),
+                ]
+            );
+        }
 
         $mpTransactionId = $mercadopagoData['transaction_id'];
         $mpStatus = $mercadopagoData['status'];
@@ -75,10 +83,10 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
         $paymentsDetails = $mercadopagoData['payments_details'];
 
         if ($mpStatus === 'refunded' && !empty($mercadopagoData["multiple_payment_transaction_id"])) {
-            $mpTransactionId = $respData["multiple_payment_transaction_id"];
+            $mpTransactionId = $mercadopagoData["multiple_payment_transaction_id"];
         }
 
-        return $this->initProcess($mpTransactionId, $mpStatus, $notificationId, $paymentsDetails, $respData);
+        return $this->initProcess($mpTransactionId, $mpStatus, $notificationId, $paymentsDetails, $mercadopagoData);
     }
 
     /**

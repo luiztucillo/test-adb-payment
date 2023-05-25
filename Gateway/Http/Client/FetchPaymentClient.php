@@ -14,7 +14,6 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
-use MercadoPago\AdbPayment\Gateway\Config\Config;
 use MercadoPago\AdbPayment\Model\MPApi\Notification;
 
 /**
@@ -68,11 +67,6 @@ class FetchPaymentClient implements ClientInterface
     protected $logger;
 
     /**
-     * @var Config
-     */
-    protected $config;
-
-    /**
      * @var Json
      */
     protected $json;
@@ -81,16 +75,13 @@ class FetchPaymentClient implements ClientInterface
 
     /**
      * @param Logger            $logger
-     * @param Config            $config
      * @param Json              $json
      */
     public function __construct(
         Logger $logger,
-        Config $config,
         Json $json,
         Notification $mpApiNotification
     ) {
-        $this->config = $config;
         $this->logger = $logger;
         $this->json = $json;
         $this->mpApiNotification = $mpApiNotification;
@@ -130,23 +121,10 @@ class FetchPaymentClient implements ClientInterface
                     $data
                 );
             }
-            $this->logger->debug(
-                [
-                    'url'      => $url.'/v1/asgard/notification/'.$notificationId,
-                    'response' => $this->json->serialize($data),
-                ]
-            );
 
         } catch (InvalidArgumentException $exc) {
-            $this->logger->debug(
-                [
-                    'url'       => $url.'/v1/asgard/notification/'.$notificationId,
-                    'response'  => $this->json->serialize($transferObject->getBody()),
-                    'error'     => $exc->getMessage(),
-                ]
-            );
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new Exception('Invalid JSON was returned by the gateway');
+            throw new Exception($exc->getMessage());
         }
 
         return $response;

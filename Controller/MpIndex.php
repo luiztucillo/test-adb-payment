@@ -419,3 +419,4 @@ abstract class MpIndex extends Action
         return $this->mpApiNotification->get($notificationId, $storeId);
     }
 }
+

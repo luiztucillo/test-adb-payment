@@ -69,9 +69,18 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         }
 
         $mpAmountRefund = null;
-        $respData = null;
 
-        $mercadopagoData = $this->loadNotificationData();
+        try {
+            $mercadopagoData = $this->loadNotificationData();
+        } catch(\Exception $e) {
+            return $this->createResult(
+                500,
+                [
+                    'error'   => 500,
+                    'message' => $e->getMessage(),
+                ]
+            );
+        }
 
         $mpTransactionId = $mercadopagoData['preference_id'];
         $mpStatus = $mercadopagoData['status'];
@@ -89,8 +98,8 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
             return $result;
         }
 
-        if ($mpStatus === 'refunded' && !empty($respData["multiple_payment_transaction_id"])) {
-            $mpTransactionId = $respData["multiple_payment_transaction_id"];
+        if ($mpStatus === 'refunded' && !empty($mercadopagoData["multiple_payment_transaction_id"])) {
+            $mpTransactionId = $mercadopagoData["multiple_payment_transaction_id"];
         }
 
         $searchCriteria = $this->searchCriteria
@@ -112,8 +121,6 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
         }
 
         $origin = '';
-        $results = [];
-        $process = [];
         $resultData = [];
         $refundId = null;
 
@@ -126,7 +133,7 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
                 foreach ($paymentsDetails as $paymentsDetail) {
                     $refunds = $paymentsDetail['refunds'];
 
-                    foreach ($respData['refunds_notifying'] as $refundNotifying) {
+                    foreach ($mercadopagoData['refunds_notifying'] as $refundNotifying) {
                         if (
                             isset($refunds[$refundNotifying['id']])
                             && $refundNotifying['notifying']
