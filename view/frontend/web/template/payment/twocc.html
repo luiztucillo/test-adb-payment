@@ -36,9 +36,17 @@
             <p class="mp-header-subtitle"><!-- ko i18n: 'Enter the amount to be paid with the first method *' --><!-- /ko --></p>
             <div class="mp-twocc-amount-selector">
                 <div data-bind="text: currencySymbol()"></div> 
+                <!-- ko if: isSiteIdMCOorMLC() -->
+                <input type="number" id="input-progress" step="1" pattern="\d+" placeholder="0" 
+                    onkeydown="return event.keyCode !== 190 && event.keyCode !== 188"
+                    data-bind="value: inputValueProgress, valueUpdate: 'keyup'">
+                </input>
+                <!-- /ko -->
+                <!-- ko ifnot: isSiteIdMCOorMLC() -->
                 <input type="number" id="input-progress" step=".01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="0,00"
                     data-bind="value: inputValueProgress, valueUpdate: 'keyup'">
                 </input>
+                <!-- /ko -->
             </div>
             <div class="mp-progress-bar">
                 <div data-bind="style: { width: getProgressBarWidth(), backgroundColor: progressHasError() ? 'red' : '#3483FA' }"></div>
