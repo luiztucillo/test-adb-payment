@@ -406,8 +406,12 @@ abstract class MpIndex extends Action
     protected function loadNotificationData(): array
     {
         $response = $this->getRequest()->getContent();
-
         $mercadopagoData = $this->json->unserialize($response);
+
+        $this->logger->debug([
+            'action'    => 'checkout_custom',
+            'payload'   => $response
+        ]);
 
         $storeId = isset($mercadopagoData["payments_metadata"]["store_id"]) ? $mercadopagoData["payments_metadata"]["store_id"] : 1;
         $notificationId = $mercadopagoData['notification_id'];

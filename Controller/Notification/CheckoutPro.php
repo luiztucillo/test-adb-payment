@@ -68,11 +68,6 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
             );
         }
 
-        $this->logger->debug([
-            'action'    => 'checkout_pro',
-            'payload'   => $this->getRequest()->getContent()
-        ]);
-
         $mpAmountRefund = null;
         $respData = null;
 
@@ -80,7 +75,6 @@ class CheckoutPro extends MpIndex implements CsrfAwareActionInterface
 
         $mpTransactionId = $mercadopagoData['preference_id'];
         $mpStatus = $mercadopagoData['status'];
-        $notificationId = $mercadopagoData['notification_id'];
         $childTransactionId = $mercadopagoData['payments_details'][0]['id'];
         $paymentsDetails = $mercadopagoData['payments_details'];
 

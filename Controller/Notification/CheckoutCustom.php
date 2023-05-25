@@ -67,11 +67,6 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
 
         $respData = null;
 
-        $this->logger->debug([
-            'action'    => 'checkout_custom',
-            'payload'   => $this->getRequest()->getContent()
-        ]);
-
         $mercadopagoData = $this->loadNotificationData();
 
         $mpTransactionId = $mercadopagoData['transaction_id'];
@@ -85,7 +80,6 @@ class CheckoutCustom extends MpIndex implements CsrfAwareActionInterface
 
         return $this->initProcess($mpTransactionId, $mpStatus, $notificationId, $paymentsDetails, $respData);
     }
-
 
     /**
      * Init Process.
