@@ -45,7 +45,7 @@ class TxnIdTwoCcHandler implements HandlerInterface
     /**
      * Payment Id - Payment Addtional Information.
      */
-    public const CARD_PAYMENT_ID = 'card_%_payment_id';
+    public const CARD_PAYMENT_ID = 'payment_%_id';
 
     /**
      * Card Type - Payment Addtional Information.
