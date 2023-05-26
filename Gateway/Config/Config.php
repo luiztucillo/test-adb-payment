@@ -305,7 +305,7 @@ class Config extends PaymentConfig
      */
     public function getModuleVersion(): ?string
     {
-        return '1.2.1';
+        return $this->resourceModule->getDbVersion('MercadoPago_AdbPayment');
     }
 
     /**
