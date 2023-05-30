@@ -18,7 +18,8 @@
         "magento/zendframework1": ">=1.15.1",
         "ext-json": "*",
         "ext-gd": "*",
-        "ext-zip": "*"
+        "ext-zip": "*",
+        "mp-plugins/php-sdk": "dev-master"
     },
     "type": "magento2-module",
     "authors": [
@@ -56,6 +57,10 @@
         {
             "type": "composer",
             "url": "https://repo-magento-mirror.fooman.co.nz/"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mercadopago/pp-php-sdk"
         }
     ],
     "prefer-stable": true,
