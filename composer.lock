@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba7eb8cb03a953e83c5735f8de5adf10",
+    "content-hash": "038aca5755b90e6e379cb22c6c4b48f7",
     "packages": [
         {
             "name": "brick/math",
@@ -4703,12 +4703,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercadopago/pp-php-sdk.git",
-                "reference": "0c20c0022c7b001f1d0063f3b09662d4ae486aaa"
+                "reference": "49b9ebdd7646f70ec5bfefd013eb29ed4b8e14fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercadopago/pp-php-sdk/zipball/0c20c0022c7b001f1d0063f3b09662d4ae486aaa",
-                "reference": "0c20c0022c7b001f1d0063f3b09662d4ae486aaa",
+                "url": "https://api.github.com/repos/mercadopago/pp-php-sdk/zipball/49b9ebdd7646f70ec5bfefd013eb29ed4b8e14fa",
+                "reference": "49b9ebdd7646f70ec5bfefd013eb29ed4b8e14fa",
                 "shasum": ""
             },
             "require": {
@@ -4754,10 +4754,10 @@
             ],
             "description": "Mercado Pago Plugins PHP-SDK",
             "support": {
-                "source": "https://github.com/mercadopago/pp-php-sdk/tree/master",
+                "source": "https://github.com/mercadopago/pp-php-sdk/tree/v1.0.0",
                 "issues": "https://github.com/mercadopago/pp-php-sdk/issues"
             },
-            "time": "2023-03-14T18:31:33+00:00"
+            "time": "2023-06-02T16:41:53+00:00"
         },
         {
             "name": "psr/container",

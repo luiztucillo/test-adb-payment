@@ -19,7 +19,7 @@
         "ext-json": "*",
         "ext-gd": "*",
         "ext-zip": "*",
-        "mp-plugins/php-sdk": "dev-master"
+        "mp-plugins/php-sdk": "dev-master#v1.0.0"
     },
     "type": "magento2-module",
     "authors": [
