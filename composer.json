@@ -60,7 +60,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/mercadopago/pp-php-sdk"
+            "url": "https://github.com/luiztucillo/pp-php-sdk"
         }
     ],
     "prefer-stable": true,
